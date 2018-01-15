@@ -16,7 +16,6 @@ function test(){
 			// $responseField.append('<p>Your expanded url is: </p><p>' + xhr.response.longUrl + '</p>');
 			
 			for (var friend of xhr.response){
-				console.log('friend: ' + friend)
 				console.log('friend.name: ' + friend.name)
 				$friendsListTable.append('<tr><td><a href="' +'#'+ '">' + friend.name + '</a></td><td>' + friend.name + '</td><td>Praca </td></tr>')
 			}
