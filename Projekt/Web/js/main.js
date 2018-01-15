@@ -17,7 +17,7 @@ function test(){
 			
 			for (var friend of xhr.response){
 				console.log('friend.name: ' + friend.name)
-				$friendsListTable.append('<tr><td><a href="' +'#'+ '">' + friend.name + '</a></td><td>' + friend.name + '</td><td>Praca </td></tr>')
+				$friendsListTable.append('<tr><td><a href="' + url +'friend/'+ friend.id +'">' + friend.firstName + '</a></td><td>' + friend.phoneNumber + '</td><td>'+ friend.group +' </td></tr>')
 			}
 		}
 	}

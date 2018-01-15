@@ -10,10 +10,55 @@ app.use('/static', express.static('public'));
 
 //const friends = [{name: 'nazwa1'}, {name: 'nazwa2'}]
 const friends = [
-    {name: 'nazwa1'},
-    {name: 'nazwa2'},
-    {name: 'nazwa3'},
-    {name: 'nazwa4'}]
+    {
+        id: 1,
+        firstName: "Adam",
+        lastName: "Misiewicz",
+        phoneNumber: "123456789",
+        email:"amisiewicz@gmail.com",
+        street: "ul. Mleczna",
+        number: "1",
+        postalCode: "00-101",
+        city: "Warszawa",
+        group: "Rodzina"
+    },
+    {
+        id: 2,
+        firstName: "Alicja",
+        lastName: "Gosiak",
+        phoneNumber: "234456567",
+        email:"agosiak@gmail.com",
+        street: "ul. Słoneczna",
+        number: "2",
+        postalCode: "00-201",
+        city: "Kraków",
+        group: "Praca"
+    },
+    {
+        id: 3,
+        firstName: "Anna",
+        lastName: "Isiewicz",
+        phoneNumber: "123456789",
+        email:"aisiewicz@gmail.com",
+        street: "ul. Kolejowa",
+        number: "3",
+        postalCode: "00-301",
+        city: "Poznań",
+        group: "Praca"
+    },
+    {
+        id: 4,
+        firstName: "Adam",
+        lastName: "Misiewicz",
+        phoneNumber: "123456789",
+        email:"test@gmail.com",
+        street: "ul. Stołowa",
+        number: "4",
+        postalCode: "00-401",
+        city: "Gdynia",
+        group: "Rodzina"
+    }
+]
 
 
 // Add headers
