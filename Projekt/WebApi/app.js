@@ -44,7 +44,7 @@ const friends = [
         number: "3",
         postalCode: "00-301",
         city: "Poznań",
-        group: "Praca"
+        group: "Inne"
     },
     {
         id: 4,
@@ -76,12 +76,22 @@ app.use(function (req, res, next) {
     next();
 });
 
+app.get("/friend/:id", (req, res, next) => {
+    console.log('/friend/' + req.params.id);
+    console.log('req.params:' + req.params);
+    
+    res.json(friends[req.params.id-1]);
+    //console.log(req);
+})
+
 app.get("/friends", (req, res, next) => {
     console.log('/friends');
 
     res.json(friends);
     //console.log(req);
 })
+
+
 
 // Invoke the app's `.listen()` method below:
 app.listen(PORT, () => {
