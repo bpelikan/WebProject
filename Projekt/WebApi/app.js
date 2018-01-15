@@ -8,7 +8,6 @@ const PORT = process.env.PORT || 4001;
 //static/jsonFile/test.json
 app.use('/static', express.static('public'));
 
-//const friends = [{name: 'nazwa1'}, {name: 'nazwa2'}]
 const friends = [
     {
         id: 1,
@@ -78,17 +77,14 @@ app.use(function (req, res, next) {
 
 app.get("/friend/:id", (req, res, next) => {
     console.log('/friend/' + req.params.id);
-    console.log('req.params:' + req.params);
     
     res.json(friends[req.params.id-1]);
-    //console.log(req);
 })
 
 app.get("/friends", (req, res, next) => {
     console.log('/friends');
 
     res.json(friends);
-    //console.log(req);
 })
 
 

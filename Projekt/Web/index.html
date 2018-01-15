@@ -30,76 +30,74 @@
             <a class="btn btn-block btn-default btn-lg" href="/Rodzina">Rodzina</a>
             <a class="btn btn-block btn-default btn-lg" href="/Test">Test</a>
         </div>
-    <div class="col-md-8">
-                
     
+        <div id="workingDiv" class="col-md-8">
+            <div class="row panel-body">
+                <table id="friendsListTable" class="well table table-hover table-bordered">
+                    <tr>
+                        <th class="col-md-5">Nazwisko i Imię</th>
+                        <th class="col-md-2">Numer Telefonu</th>
+                        <th class="col-md-2">Grupa</th>
+            
+                    </tr>
+                        <!-- <tr>
+                            <td><a href="./Friends/Details?group=&amp;friendId=7&amp;page=1">Aniewicz Anna</a></td>
+                            <td>867564756 </td>
+                            <td>Praca </td>
+                        </tr>
+                        <tr>
+                            <td><a href="/Friends/Details?group=&amp;friendId=21&amp;page=1">Dańczyński Daniel</a></td>
+                            <td>485768576 </td>
+                            <td>Inne </td>
+                        </tr>
+                        <tr>
+                            <td><a href="/Friends/Details?group=&amp;friendId=41&amp;page=1">Dańczyński Jan</a></td>
+                            <td>374586545 </td>
+                            <td>Rodzina </td>
+                        </tr>
+                        <tr>
+                            <td><a href="/Friends/Details?group=&amp;friendId=38&amp;page=1">Dańczyński Michał</a></td>
+                            <td>485765867 </td>
+                            <td>Rodzina </td>
+                        </tr>
+                        <tr>
+                            <td><a href="/Friends/Details?group=&amp;friendId=26&amp;page=1">Domowska Dominika</a></td>
+                            <td>324435546 </td>
+                            <td>Praca </td>
+                        </tr>
+                        <tr>
+                            <td><a href="/Friends/Details?group=&amp;friendId=39&amp;page=1">Jaczszyńska Adam</a></td>
+                            <td>347547654 </td>
+                            <td>Rodzina </td>
+                        </tr>
+                        <tr>
+                            <td><a href="/Friends/Details?group=&amp;friendId=35&amp;page=1">Jaczszyńska Joanna</a></td>
+                            <td>537486364 </td>
+                            <td>Rodzina </td>
+                        </tr>
+                        <tr>
+                            <td><a href="/Friends/Details?group=&amp;friendId=4&amp;page=1">Jarczyński Michał</a></td>
+                            <td>475645756 </td>
+                            <td>Praca </td>
+                        </tr>
+                        <tr>
+                            <td><a href="/Friends/Details?group=&amp;friendId=3&amp;page=1">Koch Jan</a></td>
+                            <td>364574654 </td>
+                            <td>Rodzina </td>
+                        </tr>
+                        <tr>
+                            <td><a href="/Friends/Details?group=&amp;friendId=25&amp;page=1">Koczak Adam</a></td>
+                            <td>293847565 </td>
+                            <td>Rodzina </td>
+                        </tr> -->
+                </table>
+            </div>
     
-    <div class="row panel-body">
-        <table id="friendsListTable" class="well table table-hover table-bordered">
-            <tr>
-                <th class="col-md-5">Nazwisko i Imię</th>
-                <th class="col-md-2">Numer Telefonu</th>
-                <th class="col-md-2">Grupa</th>
-    
-            </tr>
-                <!-- <tr>
-                    <td><a href="./Friends/Details?group=&amp;friendId=7&amp;page=1">Aniewicz Anna</a></td>
-                    <td>867564756 </td>
-                    <td>Praca </td>
-                </tr>
-                <tr>
-                    <td><a href="/Friends/Details?group=&amp;friendId=21&amp;page=1">Dańczyński Daniel</a></td>
-                    <td>485768576 </td>
-                    <td>Inne </td>
-                </tr>
-                <tr>
-                    <td><a href="/Friends/Details?group=&amp;friendId=41&amp;page=1">Dańczyński Jan</a></td>
-                    <td>374586545 </td>
-                    <td>Rodzina </td>
-                </tr>
-                <tr>
-                    <td><a href="/Friends/Details?group=&amp;friendId=38&amp;page=1">Dańczyński Michał</a></td>
-                    <td>485765867 </td>
-                    <td>Rodzina </td>
-                </tr>
-                <tr>
-                    <td><a href="/Friends/Details?group=&amp;friendId=26&amp;page=1">Domowska Dominika</a></td>
-                    <td>324435546 </td>
-                    <td>Praca </td>
-                </tr>
-                <tr>
-                    <td><a href="/Friends/Details?group=&amp;friendId=39&amp;page=1">Jaczszyńska Adam</a></td>
-                    <td>347547654 </td>
-                    <td>Rodzina </td>
-                </tr>
-                <tr>
-                    <td><a href="/Friends/Details?group=&amp;friendId=35&amp;page=1">Jaczszyńska Joanna</a></td>
-                    <td>537486364 </td>
-                    <td>Rodzina </td>
-                </tr>
-                <tr>
-                    <td><a href="/Friends/Details?group=&amp;friendId=4&amp;page=1">Jarczyński Michał</a></td>
-                    <td>475645756 </td>
-                    <td>Praca </td>
-                </tr>
-                <tr>
-                    <td><a href="/Friends/Details?group=&amp;friendId=3&amp;page=1">Koch Jan</a></td>
-                    <td>364574654 </td>
-                    <td>Rodzina </td>
-                </tr>
-                <tr>
-                    <td><a href="/Friends/Details?group=&amp;friendId=25&amp;page=1">Koczak Adam</a></td>
-                    <td>293847565 </td>
-                    <td>Rodzina </td>
-                </tr> -->
-        </table>
+            <div class="btn-group pull-right">
+                <a class="btn btn-default btn-primary selected" href="/">1</a><a class="btn btn-default" href="/Strona/2">2</a>
+            </div>
+        </div>
     </div>
-    
-    <div class="btn-group pull-right">
-        <a class="btn btn-default btn-primary selected" href="/">1</a><a class="btn btn-default" href="/Strona/2">2</a>
-    </div>
-    </div>
-</div>
     
     <!-- Visual Studio Browser Link -->
     <!-- <script type="application/json" id="__browserLink_initializationData">

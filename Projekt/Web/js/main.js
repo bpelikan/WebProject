@@ -3,40 +3,81 @@ const url = 'http://localhost:4001/';
 
 const $testButton = $('#testId');
 const $friendsListTable = $('#friendsListTable');
+const $friendsDetailsLink = $('.friendsDetailsLink');
+const $listDivNested = $('#workingDiv div');
+const $listDiv = $('#workingDiv');
 
-function test(){
-	console.log('test function');
-
+function loadUsers(){
+	console.log('loadUsers() function');
 	const urlToRequest = url + 'friends';
 	console.log('urlToRequest: ' + urlToRequest);
+	
 	const xhr = new XMLHttpRequest();
-	xhr.responseType = 'json'
+	xhr.responseType = 'json';
 	xhr.onreadystatechange = function(){
 		if (xhr.readyState === XMLHttpRequest.DONE) {
-			// $responseField.append('<p>Your expanded url is: </p><p>' + xhr.response.longUrl + '</p>');
-			
 			for (var friend of xhr.response){
-				console.log('friend.name: ' + friend.name)
-				$friendsListTable.append('<tr><td><a href="' + url +'friend/'+ friend.id +'">' + friend.firstName + '</a></td><td>' + friend.phoneNumber + '</td><td>'+ friend.group +' </td></tr>')
+				console.log('friend.id: ' + friend.id);
+				//$friendsListTable.append('<tr friendId="' + friend.id + '"><td><a  href="' + url +'friend/'+ friend.id +'">' + friend.firstName + '</a></td><td>' + friend.phoneNumber + '</td><td>'+ friend.group +' </td></tr>')
+				$friendsListTable.append('<tr friendId="'+friend.id+'"><td><a class="friendsDetailsLink" href="#" onClick = "showDetailsClick('+friend.id+');">' + friend.firstName + '</a></td><td>' + friend.phoneNumber + '</td><td>'+ friend.group +' </td></tr>');
 			}
 		}
 	}
 
 	xhr.open('GET', urlToRequest);
 	xhr.send();
+}
 
+function showUserDetail(id){
+	console.log('showUserDetail('+id+') function, id: ' + id);
+	const urlToRequest = url + 'friend/' + id;
+	console.log('urlToRequest: ' + urlToRequest);
+
+	const xhr = new XMLHttpRequest();
+	xhr.responseType = 'json'
+	xhr.onreadystatechange = function(){
+		if (xhr.readyState === XMLHttpRequest.DONE) {
+			let friend = xhr.response;
+			console.log('friend.id: ' + friend.id)
+			
+			$listDivNested.remove();
+			$listDiv.append('<h2>Szczegóły</h2>');
+			$listDiv.append('<div class="panel-body"><dl id="userDetailList" class="dl-horizontal well"></dl></div>');
+			$listDiv.append('<a class="btn btn-block btn-default btn-lg" href="/Friends/List?page=1">Wr&#243;ć</a></div></div>');
+			//$testList = ('#userDetailList');
+			
+			for (property in friend)
+			{
+				if (friend.hasOwnProperty(property)) {
+					$('#userDetailList').append('<dt>'+property+':</dt><dd>'+friend[property]+'</dd>');
+				}
+				
+			}
+			
+			/*for (var friend of xhr.response){
+				console.log('friend.id: ' + friend.id)
+				//$friendsListTable.append('<tr friendId="' + friend.id + '"><td><a  href="' + url +'friend/'+ friend.id +'">' + friend.firstName + '</a></td><td>' + friend.phoneNumber + '</td><td>'+ friend.group +' </td></tr>')
+				$friendsListTable.append('<tr friendId="'+friend.id+'"><td><a class="friendsDetailsLink" href="#" onClick = "showDetails('+friend.id+');">' + friend.firstName + '</a></td><td>' + friend.phoneNumber + '</td><td>'+ friend.group +' </td></tr>')
+			}*/
+		}
+	}
+
+	xhr.open('GET', urlToRequest);
+	xhr.send();
 }
 
 
 function testClick() {
-	test();
-	// return false
+	loadUsers();
 }
 
+function showDetailsClick(id) {
+	console.log('showDetails('+id+') function');
+	showUserDetail(id);
+}
 
 $testButton.click(testClick);
-
-
+$friendsDetailsLink.click(showDetailsClick);
 
 // const xhr = new XMLHttpRequest();
 // const url = 'https://api-to-call.com/endpoint';
