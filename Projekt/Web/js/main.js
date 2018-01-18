@@ -4,8 +4,12 @@ const url = 'http://localhost:4001/';
 const $testButton = $('#testId');
 const $friendsListTable = $('#friendsListTable');
 const $friendsDetailsLink = $('.friendsDetailsLink');
-const $listDivNested = $('#workingDiv div');
+
 const $listDiv = $('#workingDiv');
+const $listDivNested = $('#workingDiv div');
+const $listGroups = $('#categories');
+const $listGroupsNested = $('#categories a');
+
 
 function loadUsers(){
 	console.log('loadUsers() function');
@@ -59,6 +63,37 @@ function showUserDetail(id){
 }
 
 
+function showUserGroups(){
+	console.log('showUserGroups() function');
+	const urlToRequest = url + 'groups';
+	console.log('urlToRequest: ' + urlToRequest);
+
+	const xhr = new XMLHttpRequest();
+	xhr.responseType = 'json'
+	xhr.onreadystatechange = function(){
+		if (xhr.readyState === XMLHttpRequest.DONE) {
+			let friendsGroups = xhr.response;
+			friendsGroups.sort(function(a, b){
+				if(a.toUpperCase() < b.toUpperCase()) return -1;
+				if(a.toUpperCase() > b.toUpperCase()) return 1;
+				return 0;
+			})
+
+			$listGroupsNested.remove();
+			$listGroups.append('<a class="btn btn-block btn-default btn-lg" href="/">Wszyscy</a>');
+
+			for (index in friendsGroups)
+			{
+				$listGroups.append('<a class="btn btn-block btn-default btn-lg" href="/">' + friendsGroups[index] + '</a>');
+			}
+		}
+	}
+
+	xhr.open('GET', urlToRequest);
+	xhr.send();
+}
+
+
 function testClick() {
 	loadUsers();
 }
@@ -67,6 +102,12 @@ function showDetailsClick(id) {
 	console.log('showDetails('+id+') function');
 	showUserDetail(id);
 }
+
+
+$( document ).ready(function() {
+	showUserGroups();
+	loadUsers();
+});
 
 $testButton.click(testClick);
 $friendsDetailsLink.click(showDetailsClick);

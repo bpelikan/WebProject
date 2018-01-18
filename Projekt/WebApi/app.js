@@ -55,7 +55,7 @@ const friends = [
         number: "4",
         postalCode: "00-401",
         city: "Gdynia",
-        group: "Rodzina"
+        group: "Test"
     }
 ]
 
@@ -87,6 +87,19 @@ app.get("/friends", (req, res, next) => {
     res.json(friends);
 })
 
+app.get("/groups", (req, res, next) => {
+    console.log('/groups');
+
+    var groupsArray = [];
+    var mySet = new Set();
+    for(index in friends)
+    {
+        mySet.add(friends[index].group);
+    }
+    
+    groupsArray = Array.from(mySet)
+    res.json(groupsArray);
+})
 
 
 // Invoke the app's `.listen()` method below:
