@@ -65,7 +65,7 @@ function showUserDetail(id){
 
 function showUserGroups(){
 	console.log('showUserGroups() function');
-	const urlToRequest = url + 'groups';
+	const urlToRequest = url + 'friends/groups';
 	console.log('urlToRequest: ' + urlToRequest);
 
 	const xhr = new XMLHttpRequest();
