@@ -75,7 +75,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.get("/friend/:id", (req, res, next) => {
+app.get("/friends/:id", (req, res, next) => {
     console.log('/friend/' + req.params.id);
     
     res.json(friends[req.params.id-1]);
@@ -90,14 +90,14 @@ app.get("/friends", (req, res, next) => {
 app.get("/groups", (req, res, next) => {
     console.log('/groups');
 
-    var groupsArray = [];
-    var mySet = new Set();
+    let groupsArray = [];
+    let groupsSet = new Set();
     for(index in friends)
     {
-        mySet.add(friends[index].group);
+        groupsSet.add(friends[index].group);
     }
     
-    groupsArray = Array.from(mySet)
+    groupsArray = Array.from(groupsSet)
     res.json(groupsArray);
 })
 

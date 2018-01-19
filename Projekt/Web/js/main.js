@@ -34,7 +34,7 @@ function loadUsers(){
 
 function showUserDetail(id){
 	console.log('showUserDetail('+id+') function, id: ' + id);
-	const urlToRequest = url + 'friend/' + id;
+	const urlToRequest = url + 'friends/' + id;
 	console.log('urlToRequest: ' + urlToRequest);
 
 	const xhr = new XMLHttpRequest();
