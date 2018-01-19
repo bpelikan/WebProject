@@ -2,7 +2,7 @@ const express = require('express');
 const { createElement, getIndexById } = require('../Helpers/helperFunctions');
 
 const friendsRouter = express.Router();
-
+module.exports = friendsRouter;
 
 const friends = [
     {
@@ -72,8 +72,22 @@ friendsRouter.get("/", (req, res, next) => {
     res.json(friends);
 })
 
+friendsRouter.get("/groups", (req, res, next) => {
+    console.log('GET /friends/groups');
+
+    let groupsSet = new Set();
+    for(index in friends)
+    {
+        groupsSet.add(friends[index].group);
+    }
+    
+    let groupsArray = [];
+    groupsArray = Array.from(groupsSet)
+    res.json(groupsArray);
+})
+
 friendsRouter.get("/:id", (req, res, next) => {
-    console.log('/friend/' + req.params.id);
+    console.log('GET /friends/:id ' + req.params.id);
     const friendIndex = getIndexById(req.params.id, friends);
     
     if (friendIndex !== -1) {
@@ -84,7 +98,7 @@ friendsRouter.get("/:id", (req, res, next) => {
 })
 
 friendsRouter.put('/:id', (req, res, next) => {
-    console.log('PUT /friends/' + req.params.id);
+    console.log('PUT /friends/:id ' + req.params.id);
     let friendUpdate = req.body;
     const friendIndex = getIndexById(req.params.id, friends);
 
@@ -110,7 +124,7 @@ friendsRouter.post('/', (req, res, next) => {
 })
 
 friendsRouter.delete('/:id', (req, res, next) => {
-    console.log('DELETE /friends/' + req.params.id);
+    console.log('DELETE /friends/:id ' + req.params.id);
     const friendIndex = getIndexById(req.params.id, friends);
     
     if (friendIndex !== -1) {
@@ -120,19 +134,3 @@ friendsRouter.delete('/:id', (req, res, next) => {
         res.status(404).send();
     }
 })
-
-friendsRouter.get("/groups", (req, res, next) => {
-    console.log('GET /groups');
-
-    let groupsArray = [];
-    let groupsSet = new Set();
-    for(index in friends)
-    {
-        groupsSet.add(friends[index].group);
-    }
-    
-    groupsArray = Array.from(groupsSet)
-    res.json(groupsArray);
-})
-
-module.exports = friendsRouter;
