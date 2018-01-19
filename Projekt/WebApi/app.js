@@ -2,7 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const friendsRouter = require('./Routers/friendsRouter');
-const morgan = require('morgan');
+const logger = require('morgan');
 const errorHandler = require('errorhandler')
 
 // Instantiate the app here
@@ -29,7 +29,7 @@ app.use(function (req, res, next) {
 });
 
 
-app.use(morgan('dev')); 
+app.use(logger('dev')); 
 
 app.use('/friends', friendsRouter);
 
