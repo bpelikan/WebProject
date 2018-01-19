@@ -33,6 +33,13 @@ app.use(morgan('dev'));
 app.use('/friends', friendsRouter);
 
 
+app.use((err, req, res, next) => {
+    if (!err.status) {
+      err.status = 500;
+    }
+    console.log(`ERROR ${err.status}: ${err.message}`);
+    res.status(err.status).send(err.message);
+});
 
 
 // Invoke the app's `.listen()` method below:
