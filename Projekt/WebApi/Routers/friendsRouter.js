@@ -67,16 +67,17 @@ const friends = [
     }
 ];
 
-const checkExistingId = (req, res, next) => {
-    //console.log(`${req.method}: /friends${req.path} (checking if ID is existing)`);
-    const friendIndex = getIndexById(req.params.id, friends);
-    if (friendIndex !== -1) {
-        req.friendIndex = friendIndex;
-        next();
-    }else{
+friendsRouter.param('friendId', (req, res, next, id) => {
+    const friendId = Number(id);
+    const friendIndex = getIndexById(req.params.friendId, friends);
+    
+    if (friendIndex !== -1){
+      req.friendIndex = friendIndex;
+      next();
+    } else {
         res.status(404).send('Friend with this ID doesn\'t exist');
     }
-}
+  })
 
 friendsRouter.get("/", (req, res, next) => {
     res.json(friends);
@@ -94,11 +95,11 @@ friendsRouter.get("/groups", (req, res, next) => {
     res.json(groupsArray);
 })
 
-friendsRouter.get("/:id", checkExistingId, (req, res, next) => {
+friendsRouter.get("/:friendId", (req, res, next) => {
     res.json(friends[req.friendIndex]);
 })
 
-friendsRouter.put('/:id', checkExistingId, (req, res, next) => {
+friendsRouter.put('/:friendId', (req, res, next) => {
     let friendUpdate = req.body;
 
     friendUpdate.id = req.friendIndex;
@@ -117,7 +118,7 @@ friendsRouter.post('/', (req, res, next) => {
       }
 })
 
-friendsRouter.delete('/:id', checkExistingId, (req, res, next) => {
+friendsRouter.delete('/:friendId', (req, res, next) => {
     friends.splice(req.friendIndex,1);
     res.status(204).send();
 })
