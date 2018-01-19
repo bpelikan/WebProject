@@ -26,8 +26,14 @@ app.use(function (req, res, next) {
     next();
 });
 
-//const friendsRouter = express.Router();
+
+app.use((req, res, next) => {
+    console.log(`${req.method}: ${req.path} (Request Received)`);
+    next();
+}); 
+
 app.use('/friends', friendsRouter);
+
 
 
 // Invoke the app's `.listen()` method below:

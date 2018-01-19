@@ -67,13 +67,24 @@ const friends = [
     }
 ];
 
+friendsRouter.use('/:id', (req, res, next) => {
+    console.log(`${req.method}: /friends${req.path}${req.params.id} (checking if ID is existing)`);
+    const friendIndex = getIndexById(req.params.id, friends);
+    if (friendIndex !== -1) {
+        req.friendIndex = friendIndex;
+        next();
+    }else{
+        res.status(404).send();
+    }
+})
+
 friendsRouter.get("/", (req, res, next) => {
-    console.log('GET /friends');
+    console.log('GET: /friends');
     res.json(friends);
 })
 
 friendsRouter.get("/groups", (req, res, next) => {
-    console.log('GET /friends/groups');
+    console.log('GET: /friends/groups');
 
     let groupsSet = new Set();
     for(index in friends)
@@ -87,32 +98,22 @@ friendsRouter.get("/groups", (req, res, next) => {
 })
 
 friendsRouter.get("/:id", (req, res, next) => {
-    console.log('GET /friends/:id ' + req.params.id);
-    const friendIndex = getIndexById(req.params.id, friends);
-    
-    if (friendIndex !== -1) {
-        res.json(friends[friendIndex]);
-    } else {
-        res.status(404).send();
-    }
+    console.log('GET: /friends/:id ' + req.params.id);
+
+    res.json(friends[req.friendIndex]);
 })
 
 friendsRouter.put('/:id', (req, res, next) => {
-    console.log('PUT /friends/:id ' + req.params.id);
+    console.log('PUT: /friends/:id ' + req.params.id);
     let friendUpdate = req.body;
-    const friendIndex = getIndexById(req.params.id, friends);
 
-    if (friendIndex !== -1) {
-        friendUpdate.id = friendIndex;
-        friends[friendIndex] = friendUpdate;
-        res.json(friends[friendIndex]);
-    } else {
-        res.status(404).send();
-    }
+    friendUpdate.id = req.friendIndex;
+    friends[req.friendIndex] = friendUpdate;
+    res.json(friends[req.friendIndex]);
 })
 
 friendsRouter.post('/', (req, res, next) => {
-    console.log('POST /friends');
+    console.log('POST: /friends');
     const receivedFriend = createElement('friends', req.body);
     
     if (receivedFriend) {
@@ -124,13 +125,8 @@ friendsRouter.post('/', (req, res, next) => {
 })
 
 friendsRouter.delete('/:id', (req, res, next) => {
-    console.log('DELETE /friends/:id ' + req.params.id);
-    const friendIndex = getIndexById(req.params.id, friends);
-    
-    if (friendIndex !== -1) {
-        friends.splice(friendIndex,1);
-        res.status(204).send();
-    } else {
-        res.status(404).send();
-    }
+    console.log('DELETE: /friends/:id ' + req.params.id);
+
+    friends.splice(req.friendIndex,1);
+    res.status(204).send();
 })
