@@ -2,6 +2,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const friendsRouter = require('./Routers/friendsRouter');
+const morgan = require('morgan');
 
 // Instantiate the app here
 const app = express();
@@ -27,12 +28,10 @@ app.use(function (req, res, next) {
 });
 
 
-app.use((req, res, next) => {
-    console.log(`${req.method}: ${req.path} (Request Received)`);
-    next();
-}); 
+app.use(morgan('dev')); 
 
 app.use('/friends', friendsRouter);
+
 
 
 
