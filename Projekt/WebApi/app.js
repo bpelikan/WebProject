@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const friendsRouter = require('./Routers/friendsRouter');
 const morgan = require('morgan');
+const errorHandler = require('errorhandler')
 
 // Instantiate the app here
 const app = express();
@@ -34,11 +35,7 @@ app.use('/friends', friendsRouter);
 
 
 app.use((err, req, res, next) => {
-    if (!err.status) {
-      err.status = 500;
-    }
-    console.log(`ERROR ${err.status}: ${err.message}`);
-    res.status(err.status).send(err.message);
+    res.status(500).send(err);
 });
 
 

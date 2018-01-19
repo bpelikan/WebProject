@@ -74,9 +74,7 @@ const checkExistingId = (req, res, next) => {
         req.friendIndex = friendIndex;
         next();
     }else{
-        const error = new Error('Friend with this ID doesn\'t exist')
-        error.status = 404;
-        return next(error);
+        res.status(404).send('Friend with this ID doesn\'t exist');
     }
 }
 
@@ -115,9 +113,7 @@ friendsRouter.post('/', (req, res, next) => {
         friends.push(receivedFriend);
         res.status(201).json(receivedFriend);
       } else {
-        const error = new Error('Friend couldn\'t be saved')
-        error.status = 400;
-        return next(error);
+        res.status(400).send('Friend couldn\'t be saved');
       }
 })
 
