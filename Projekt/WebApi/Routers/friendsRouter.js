@@ -32,6 +32,10 @@ var friendSchema = mongoose.Schema({
     created: { 
         type: Date,
         default: Date.now
+    },
+    edited: { 
+        type: Date,
+        default: Date.now
     }
 });
 
@@ -139,18 +143,42 @@ friendsRouter.get("/:friendId", (req, res, next) => {
         if (err) {
             res.status(404).send('Friend with this ID doesn\'t exist');
         }
-        
         res.json(friend);
     });
-
 })
 
 friendsRouter.put('/:friendId', (req, res, next) => {
-    let friendUpdate = req.body;
+    const receivedFriend = createElement('friends', req.body);
 
-    friendUpdate.id = req.friendIndex;
-    friends[req.friendIndex] = friendUpdate;
-    res.json(friends[req.friendIndex]);
+    if (receivedFriend) {
+        FriendData.findById(req.params.friendId, function(err, friend) {
+            if (err) {
+                res.status(404).send('Friend with this ID doesn\'t exist');
+            }
+
+            friend.firstName = receivedFriend.firstName,
+            friend.lastName = receivedFriend.lastName,
+            friend.phoneNumber = receivedFriend.phoneNumber,
+            friend.email = receivedFriend.email,
+            friend.street = receivedFriend.street,
+            friend.number = receivedFriend.number,
+            friend.postalCode = receivedFriend.postalCode,
+            friend.city = receivedFriend.city,
+            friend.group = receivedFriend.group,
+            friend.edited = Date.now();
+    
+            friend.save(function(err) {
+                if (err) {
+                    res.status(400).send('Friend  couldn\'t be saved in database');
+                }
+                 
+                res.json(friend);
+            });
+            
+        });
+      } else {
+        res.status(400).send('Friend data couldn\'t be readed from request');
+      }
 })
 
 friendsRouter.post('/', (req, res, next) => {
@@ -177,11 +205,9 @@ friendsRouter.post('/', (req, res, next) => {
             }
             console.log('Author successfully saved.');
         });
-
-        //friends.push(receivedFriend);
         res.status(201).json(receivedFriend);
       } else {
-        res.status(400).send('Friend couldn\'t be saved');
+        res.status(400).send('Friend data couldn\'t be readed from request');
       }
 })
 
