@@ -108,7 +108,11 @@ const friends = [
 ];
 
 friendsRouter.get("/", (req, res, next) => {
-    res.json(friends);
+    Friend.find({}).exec(function(err, friends) {
+        if (err) throw err;
+         
+        res.json(friends);
+    });
 })
 
 friendsRouter.get("/groups", (req, res, next) => {
@@ -188,7 +192,4 @@ friendsRouter.delete('/:friendId', (req, res, next) => {
         }
         res.status(204).send();
     });
-    
-    // friends.splice(req.friendIndex,1);
-    // res.status(204).send();
 })
