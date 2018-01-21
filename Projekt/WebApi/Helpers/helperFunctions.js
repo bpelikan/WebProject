@@ -25,14 +25,7 @@ const createElement = (elementType, queryArguments) => {
         }
   };
 
-const getIndexById = (id, elementList) => {
-    return elementList.findIndex((element) => {
-        return element.id === Number(id);
-    });
-};
-
 
 module.exports = {
     createElement: createElement,
-    getIndexById : getIndexById
 };

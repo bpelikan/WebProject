@@ -1,5 +1,5 @@
 const express = require('express');
-const { createElement, getIndexById } = require('../Helpers/helperFunctions');
+const { createElement } = require('../Helpers/helperFunctions');
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/friendsDb', function (err) {
@@ -107,21 +107,6 @@ const friends = [
     }
 ];
 
-// friendsRouter.param('friendId', (req, res, next, id) => {
-//     req.friendIndex = id;
-//     console.log('searching: ' + req.friendIndex);
-//     next();
-//     // const friendId = Number(id);
-//     // const friendIndex = getIndexById(req.params.friendId, friends);
-    
-//     // if (friendIndex !== -1){
-//     //   req.friendIndex = friendIndex;
-//     //   next();
-//     // } else {
-//     //     res.status(404).send('Friend with this ID doesn\'t exist');
-//     // }
-//   })
-
 friendsRouter.get("/", (req, res, next) => {
     res.json(friends);
 })
@@ -141,7 +126,7 @@ friendsRouter.get("/groups", (req, res, next) => {
 friendsRouter.get("/:friendId", (req, res, next) => {
     Friend.findById(req.params.friendId, function(err, friend) {
         if (err) {
-            res.status(404).send('Friend with this ID doesn\'t exist');
+            res.status(404).send('Couldn\'t get friend with this id from database');
         }
         res.json(friend);
     });
@@ -197,6 +182,13 @@ friendsRouter.post('/', (req, res, next) => {
 })
 
 friendsRouter.delete('/:friendId', (req, res, next) => {
-    friends.splice(req.friendIndex,1);
-    res.status(204).send();
+    Friend.remove({ _id: req.params.friendId }, function(err) {
+        if (err) {
+            res.status(404).send('Couldn\'t delete friend with this id from database');
+        }
+        res.status(204).send();
+    });
+    
+    // friends.splice(req.friendIndex,1);
+    // res.status(204).send();
 })
