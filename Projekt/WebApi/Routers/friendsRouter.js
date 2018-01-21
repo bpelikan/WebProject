@@ -160,9 +160,28 @@ friendsRouter.post('/', (req, res, next) => {
     const receivedFriend = createElement('friends', req.body);
     
     if (receivedFriend) {
+        var friendToAdd = new FriendData ({
+            _id: new mongoose.Types.ObjectId(),
+            firstName: receivedFriend.firstName,
+            lastName: receivedFriend.lastName,
+            phoneNumber: receivedFriend.phoneNumber,
+            email:receivedFriend.email,
+            street: receivedFriend.street,
+            number: receivedFriend.number,
+            postalCode: receivedFriend.postalCode,
+            city: receivedFriend.city,
+            group: receivedFriend.group,
+        });
+        
+        
+        friendToAdd.save(function(err) {
+            if (err) {
+                throw err;
+            }
+            console.log('Author successfully saved.');
+        });
 
-
-        friends.push(receivedFriend);
+        //friends.push(receivedFriend);
         res.status(201).json(receivedFriend);
       } else {
         res.status(400).send('Friend couldn\'t be saved');
