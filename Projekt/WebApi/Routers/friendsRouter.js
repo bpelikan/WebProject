@@ -151,30 +151,14 @@ friendsRouter.put('/:friendId', (req, res, next) => {
     const receivedFriend = createElement('friends', req.body);
 
     if (receivedFriend) {
-        FriendData.findById(req.params.friendId, function(err, friend) {
-            if (err) {
-                res.status(404).send('Friend with this ID doesn\'t exist');
-            }
-
-            friend.firstName = receivedFriend.firstName,
-            friend.lastName = receivedFriend.lastName,
-            friend.phoneNumber = receivedFriend.phoneNumber,
-            friend.email = receivedFriend.email,
-            friend.street = receivedFriend.street,
-            friend.number = receivedFriend.number,
-            friend.postalCode = receivedFriend.postalCode,
-            friend.city = receivedFriend.city,
-            friend.group = receivedFriend.group,
-            friend.edited = Date.now();
-    
-            friend.save(function(err) {
+        FriendData.findByIdAndUpdate(req.params.friendId, 
+            receivedFriend, 
+            function(err, friend) {
                 if (err) {
                     res.status(400).send('Friend  couldn\'t be saved in database');
                 }
-                 
-                res.json(friend);
-            });
             
+                res.json(friend);
         });
       } else {
         res.status(400).send('Friend data couldn\'t be readed from request');
