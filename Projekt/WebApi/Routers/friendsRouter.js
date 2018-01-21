@@ -125,17 +125,20 @@ const friends = [
     }
 ];
 
-friendsRouter.param('friendId', (req, res, next, id) => {
-    const friendId = Number(id);
-    const friendIndex = getIndexById(req.params.friendId, friends);
+// friendsRouter.param('friendId', (req, res, next, id) => {
+//     req.friendIndex = id;
+//     console.log('searching: ' + req.friendIndex);
+//     next();
+//     // const friendId = Number(id);
+//     // const friendIndex = getIndexById(req.params.friendId, friends);
     
-    if (friendIndex !== -1){
-      req.friendIndex = friendIndex;
-      next();
-    } else {
-        res.status(404).send('Friend with this ID doesn\'t exist');
-    }
-  })
+//     // if (friendIndex !== -1){
+//     //   req.friendIndex = friendIndex;
+//     //   next();
+//     // } else {
+//     //     res.status(404).send('Friend with this ID doesn\'t exist');
+//     // }
+//   })
 
 friendsRouter.get("/", (req, res, next) => {
     res.json(friends);
@@ -154,7 +157,14 @@ friendsRouter.get("/groups", (req, res, next) => {
 })
 
 friendsRouter.get("/:friendId", (req, res, next) => {
-    res.json(friends[req.friendIndex]);
+    FriendData.findById(req.params.friendId, function(err, friend) {
+        if (err) {
+            res.status(404).send('Friend with this ID doesn\'t exist');
+        }
+        
+        res.json(friend);
+    });
+
 })
 
 friendsRouter.put('/:friendId', (req, res, next) => {
@@ -185,7 +195,7 @@ friendsRouter.post('/', (req, res, next) => {
         
         friendToAdd.save(function(err) {
             if (err) {
-                throw err;
+                res.status(400).send('Friend couldn\'t be saved in database');
             }
             console.log('Author successfully saved.');
         });
