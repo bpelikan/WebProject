@@ -1,4 +1,3 @@
-let friendIdCounter = 4;
 
 const createElement = (elementType, queryArguments) => {
     if (queryArguments.hasOwnProperty('firstName') &&
@@ -10,11 +9,7 @@ const createElement = (elementType, queryArguments) => {
         queryArguments.hasOwnProperty('postalCode') &&
         queryArguments.hasOwnProperty('city') &&
         queryArguments.hasOwnProperty('group') && elementType === 'friends') {
-            let currentId;
-            friendIdCounter += 1;
-            currentId = friendIdCounter;
             return {
-                'id':    currentId,
                 'firstName': queryArguments.firstName,
                 'lastName':  queryArguments.lastName,
                 'phoneNumber':  queryArguments.phoneNumber,

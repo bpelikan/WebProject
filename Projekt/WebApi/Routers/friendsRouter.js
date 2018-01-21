@@ -39,7 +39,7 @@ var friendSchema = mongoose.Schema({
     }
 });
 
-var FriendData = mongoose.model('FriendData', friendSchema);
+var Friend = mongoose.model('Friend', friendSchema);
 
 const friendsRouter = express.Router();
 module.exports = friendsRouter;
@@ -139,7 +139,7 @@ friendsRouter.get("/groups", (req, res, next) => {
 })
 
 friendsRouter.get("/:friendId", (req, res, next) => {
-    FriendData.findById(req.params.friendId, function(err, friend) {
+    Friend.findById(req.params.friendId, function(err, friend) {
         if (err) {
             res.status(404).send('Friend with this ID doesn\'t exist');
         }
@@ -149,9 +149,10 @@ friendsRouter.get("/:friendId", (req, res, next) => {
 
 friendsRouter.put('/:friendId', (req, res, next) => {
     const receivedFriend = createElement('friends', req.body);
+    receivedFriend.edited = Date.now();
 
     if (receivedFriend) {
-        FriendData.findByIdAndUpdate(req.params.friendId, 
+        Friend.findByIdAndUpdate(req.params.friendId, 
             receivedFriend, 
             function(err, friend) {
                 if (err) {
@@ -169,7 +170,7 @@ friendsRouter.post('/', (req, res, next) => {
     const receivedFriend = createElement('friends', req.body);
     
     if (receivedFriend) {
-        var friendToAdd = new FriendData ({
+        var friendToAdd = new Friend ({
             _id: new mongoose.Types.ObjectId(),
             firstName: receivedFriend.firstName,
             lastName: receivedFriend.lastName,
@@ -188,8 +189,8 @@ friendsRouter.post('/', (req, res, next) => {
                 res.status(400).send('Friend couldn\'t be saved in database');
             }
             console.log('Author successfully saved.');
+            res.status(201).json(friendToAdd);
         });
-        res.status(201).json(receivedFriend);
       } else {
         res.status(400).send('Friend data couldn\'t be readed from request');
       }
