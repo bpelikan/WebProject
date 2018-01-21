@@ -36,28 +36,6 @@ var friendSchema = mongoose.Schema({
 });
 
 var FriendData = mongoose.model('FriendData', friendSchema);
-// var jamieAuthor = new FriendData ({
-//     _id: new mongoose.Types.ObjectId(),
-//     firstName: "Adam",
-//     lastName: "Misiewicz",
-//     phoneNumber: "123456789",
-//     email:"amisiewicz@gmail.com",
-//     street: "ul. Mleczna",
-//     number: "1",
-//     postalCode: "00-101",
-//     city: "Warszawa",
-//     group: "Rodzina"
-// });
-
-
-// jamieAuthor.save(function(err) {
-//     if (err) {
-//         throw err;
-//     }
-//     console.log('Author successfully saved.');
-// });
-
-
 
 const friendsRouter = express.Router();
 module.exports = friendsRouter;
