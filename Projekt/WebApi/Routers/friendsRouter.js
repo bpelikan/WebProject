@@ -109,7 +109,9 @@ const friends = [
 
 friendsRouter.get("/", (req, res, next) => {
     Friend.find({}).exec(function(err, friends) {
-        if (err) throw err;
+        if (err) {
+            res.status(500).send('Couldn\'t get friends from database');
+        }
          
         res.json(friends);
     });
@@ -130,7 +132,7 @@ friendsRouter.get("/groups", (req, res, next) => {
 friendsRouter.get("/:friendId", (req, res, next) => {
     Friend.findById(req.params.friendId, function(err, friend) {
         if (err) {
-            res.status(404).send('Couldn\'t get friend with this id from database');
+            res.status(500).send('Couldn\'t get friend with this id from database');
         }
         res.json(friend);
     });
@@ -145,7 +147,7 @@ friendsRouter.put('/:friendId', (req, res, next) => {
             receivedFriend, 
             function(err, friend) {
                 if (err) {
-                    res.status(400).send('Friend  couldn\'t be saved in database');
+                    res.status(500).send('Friend  couldn\'t be saved in database');
                 }
             
                 res.json(friend);
@@ -175,7 +177,7 @@ friendsRouter.post('/', (req, res, next) => {
         
         friendToAdd.save(function(err) {
             if (err) {
-                res.status(400).send('Friend couldn\'t be saved in database');
+                res.status(500).send('Friend couldn\'t be saved in database');
             }
             console.log('Author successfully saved.');
             res.status(201).json(friendToAdd);
@@ -188,7 +190,7 @@ friendsRouter.post('/', (req, res, next) => {
 friendsRouter.delete('/:friendId', (req, res, next) => {
     Friend.remove({ _id: req.params.friendId }, function(err) {
         if (err) {
-            res.status(404).send('Couldn\'t delete friend with this id from database');
+            res.status(500).send('Couldn\'t delete friend with this id from database');
         }
         res.status(204).send();
     });
