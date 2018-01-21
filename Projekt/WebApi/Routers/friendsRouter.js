@@ -11,9 +11,18 @@ mongoose.connect('mongodb://localhost/friendsDb', function (err) {
 
 var friendSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
-    firstName: String,
-    lastName: String,
-    phoneNumber: String,
+    firstName: {
+        type: String,
+        required: true
+    },
+    lastName: {
+        type: String,
+        required: true
+    },
+    phoneNumber: {
+        type: String,
+        required: true
+    },
     email: String,
     street: String,
     number: String,
