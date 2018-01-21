@@ -1,6 +1,55 @@
 const express = require('express');
 const { createElement, getIndexById } = require('../Helpers/helperFunctions');
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/friendsDb', function (err) {
+   if (err) {
+       throw err;
+    }
+   console.log('Successfully connected to Mongo database');
+});
+
+var friendSchema = mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
+    firstName: String,
+    lastName: String,
+    phoneNumber: String,
+    email: String,
+    street: String,
+    number: String,
+    postalCode: String,
+    city: String,
+    group: String,
+    created: { 
+        type: Date,
+        default: Date.now
+    }
+});
+
+var FriendData = mongoose.model('FriendData', friendSchema);
+// var jamieAuthor = new FriendData ({
+//     _id: new mongoose.Types.ObjectId(),
+//     firstName: "Adam",
+//     lastName: "Misiewicz",
+//     phoneNumber: "123456789",
+//     email:"amisiewicz@gmail.com",
+//     street: "ul. Mleczna",
+//     number: "1",
+//     postalCode: "00-101",
+//     city: "Warszawa",
+//     group: "Rodzina"
+// });
+
+
+// jamieAuthor.save(function(err) {
+//     if (err) {
+//         throw err;
+//     }
+//     console.log('Author successfully saved.');
+// });
+
+
+
 const friendsRouter = express.Router();
 module.exports = friendsRouter;
 
@@ -111,6 +160,8 @@ friendsRouter.post('/', (req, res, next) => {
     const receivedFriend = createElement('friends', req.body);
     
     if (receivedFriend) {
+
+
         friends.push(receivedFriend);
         res.status(201).json(receivedFriend);
       } else {
