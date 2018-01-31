@@ -108,7 +108,7 @@ const friends = [
 ];
 
 friendsRouter.get("/", (req, res, next) => {
-    Friend.find({}).exec(function(err, friends) {
+    Friend.find().exec(function(err, friends) {
         if (err) {
             res.status(500).send('Couldn\'t get friends from database');
         }
@@ -118,15 +118,13 @@ friendsRouter.get("/", (req, res, next) => {
 })
 
 friendsRouter.get("/groups", (req, res, next) => {
-    let groupsSet = new Set();
-    for(index in friends)
-    {
-        groupsSet.add(friends[index].group);
-    }
-    
-    let groupsArray = [];
-    groupsArray = Array.from(groupsSet)
-    res.json(groupsArray);
+    Friend.find().distinct('group', function(err, groups){
+        if (err) {
+            res.status(500).send('Couldn\'t get froups from database');
+        }
+        
+        res.json(groups);
+    });
 })
 
 friendsRouter.get("/:friendId", (req, res, next) => {
