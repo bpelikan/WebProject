@@ -25,7 +25,6 @@ const createElement = (elementType, queryArguments) => {
         }
   };
 
-
 module.exports = {
     createElement: createElement,
 };

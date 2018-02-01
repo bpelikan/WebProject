@@ -21,9 +21,9 @@ function loadUsers(){
 	xhr.onreadystatechange = function(){
 		if (xhr.readyState === XMLHttpRequest.DONE) {
 			for (var friend of xhr.response){
-				console.log('friend.id: ' + friend.id);
+				console.log('friend.id: ' + friend._id);
 				//$friendsListTable.append('<tr friendId="' + friend.id + '"><td><a  href="' + url +'friend/'+ friend.id +'">' + friend.firstName + '</a></td><td>' + friend.phoneNumber + '</td><td>'+ friend.group +' </td></tr>')
-				$friendsListTable.append('<tr friendId="'+friend.id+'"><td><a class="friendsDetailsLink" href="#" onClick = "showDetailsClick('+friend.id+');">' + friend.firstName + '</a></td><td>' + friend.phoneNumber + '</td><td>'+ friend.group +' </td></tr>');
+				$friendsListTable.append('<tr friendId="'+friend._id+'"><td><a class="friendsDetailsLink" href="#" onClick = "showDetailsClick(\''+friend._id+'\');">' + friend.firstName + '</a></td><td>' + friend.phoneNumber + '</td><td>'+ friend.group +' </td></tr>');
 			}
 		}
 	}

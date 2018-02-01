@@ -28,16 +28,13 @@ app.use(function (req, res, next) {
     next();
 });
 
-
 app.use(logger('dev')); 
 
 app.use('/friends', friendsRouter);
 
-
 app.use((err, req, res, next) => {
     res.status(500).send(err);
 });
-
 
 // Invoke the app's `.listen()` method below:
 app.listen(PORT, () => {

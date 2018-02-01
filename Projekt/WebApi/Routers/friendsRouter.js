@@ -3,10 +3,10 @@ const { createElement } = require('../Helpers/helperFunctions');
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/friendsDb', function (err) {
-   if (err) {
-       throw err;
+    if (err) {
+        throw err;
     }
-   console.log('Successfully connected to Mongo database');
+    console.log('Successfully connected to Mongo database');
 });
 
 var friendSchema = mongoose.Schema({
@@ -40,9 +40,7 @@ var friendSchema = mongoose.Schema({
 });
 
 var Friend = mongoose.model('Friend', friendSchema);
-
 const friendsRouter = express.Router();
-module.exports = friendsRouter;
 
 friendsRouter.get("/", (req, res, next) => {
     Friend.find().exec(function(err, friends) {
@@ -55,9 +53,9 @@ friendsRouter.get("/", (req, res, next) => {
 })
 
 friendsRouter.get("/groups", (req, res, next) => {
-    Friend.find().distinct('group', function(err, groups){
+    Friend.distinct('group', function(err, groups){
         if (err) {
-            res.status(500).send('Couldn\'t get froups from database');
+            res.status(500).send('Couldn\'t get groups from database');
         }
         
         res.json(groups);
@@ -130,3 +128,5 @@ friendsRouter.delete('/:friendId', (req, res, next) => {
         res.status(204).send();
     });
 })
+
+module.exports = friendsRouter;
