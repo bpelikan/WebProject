@@ -3,6 +3,4 @@ app.controller('DetailsController', ['$scope', 'friendDetails', '$routeParams', 
     friendDetails.then(function(data) {
         $scope.friend = data;
     });
-
-
 }]);

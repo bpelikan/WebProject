@@ -1,8 +1,8 @@
 <div class="row panel">
-        <div id="categories" class="col-md-3">
-                <!-- <a class="btn btn-block btn-default btn-lg" href="/">Wszyscy</a> -->
-        </div>
-        <div class="col-md-8">
+        <!-- <div id="categories" class="col-md-3">
+                <a class="btn btn-block btn-default btn-lg" href="/">Wszyscy</a>
+        </div> -->
+        <div class="col-md-12">
                         
                 <h2>Szczegóły</h2>
                 
@@ -39,12 +39,6 @@
                                         {{ friend.number }}
                                 </dd>
                                 <dt>
-                                        Ulica:
-                                </dt>
-                                <dd>
-                                        {{ friend.street }}
-                                </dd>
-                                <dt>
                                         Kod pocztowy:
                                 </dt>
                                 <dd>
@@ -66,13 +60,13 @@
                                         Data dodania:
                                 </dt>
                                 <dd>
-                                        {{ friend.created }}
+                                        {{ friend.created  | date:'yyyy-MM-dd HH:mm:ss' }}
                                 </dd>
                                 <dt>
                                         Data ostatniej edycji:
                                 </dt>
                                 <dd>
-                                        {{ friend.edited }}
+                                        {{ friend.edited | date:'yyyy-MM-dd HH:mm:ss' }}
                                 </dd>
                                 
                         </dl>
