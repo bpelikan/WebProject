@@ -11,21 +11,7 @@ app.controller('ListController', ['$scope', 'friends', 'groups', '$route', '$tem
         $scope.groups = data;
     });
 
-    // friends.then(function(data) { 
-    //     $scope.friends = data; 
-    // });
-    
-    // groups.then(function(data) { 
-    //     $scope.groups = data; 
-    // });
-
     this.reloadData = function(){
         $route.reload()
     }
-        //$templateCache.removeAll();
-        // $window.location.reload();
-    // var currentPageTemplate = $route.current.templateUrl;
-    // $templateCache.remove(currentPageTemplate);
-    // $route.reload();
-    
 }]);
