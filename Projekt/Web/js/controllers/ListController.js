@@ -1,14 +1,9 @@
-app.controller('ListController', ['$scope', 'friends', function($scope, friends) { 
+app.controller('ListController', ['$scope', 'friends', 'groups', function($scope, friends, groups) { 
     friends.then(function(data) { 
         $scope.friends = data; 
     });
 
-
-    $scope.clicks = 0;
-    $scope.plusClicks = function(index) { 
-        $scope.clicks += 1;
-        console.log($scope.friends[index]);
-      };    
-
-    
+    groups.then(function(data) { 
+        $scope.groups = data; 
+    });
 }]);

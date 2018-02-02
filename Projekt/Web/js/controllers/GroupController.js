@@ -1,6 +1,5 @@
-app.controller('GroupController', ['$scope', function($scope) { 
-    $scope.groups =["Rodzina", "Praca", "Inne", "Grupa1" ];
-
-    //
-       
-}]);
+// app.controller('GroupController', ['$scope', 'groups', function($scope, groups) { 
+//     groups.then(function(data) { 
+//         $scope.groups = data; 
+//     }); 
+// }]);
