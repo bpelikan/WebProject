@@ -41,6 +41,7 @@ var friendSchema = mongoose.Schema({
 
 var Friend = mongoose.model('Friend', friendSchema);
 const friendsRouter = express.Router();
+const groupsRouter = express.Router();
 
 friendsRouter.get("/", (req, res, next) => {
     Friend.find().exec(function(err, friends) {
@@ -52,7 +53,7 @@ friendsRouter.get("/", (req, res, next) => {
     });
 })
 
-friendsRouter.get("/groups", (req, res, next) => {
+groupsRouter.get("/", (req, res, next) => {
     Friend.distinct('group', function(err, groups){
         if (err) {
             res.status(500).send('Couldn\'t get groups from database');
@@ -129,4 +130,4 @@ friendsRouter.delete('/:friendId', (req, res, next) => {
     });
 })
 
-module.exports = friendsRouter;
+module.exports = {friendsRouter, groupsRouter};

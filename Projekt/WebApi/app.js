@@ -1,7 +1,7 @@
 // Import the express library here
 const express = require('express');
 const bodyParser = require('body-parser');
-const friendsRouter = require('./Routers/friendsRouter');
+const {friendsRouter, groupsRouter} = require('./Routers/friendsRouter');
 const logger = require('morgan');
 const errorHandler = require('errorhandler')
 
@@ -31,6 +31,8 @@ app.use(function (req, res, next) {
 app.use(logger('dev')); 
 
 app.use('/friends', friendsRouter);
+
+app.use('/groups', groupsRouter);
 
 app.use((err, req, res, next) => {
     res.status(500).send(err);
