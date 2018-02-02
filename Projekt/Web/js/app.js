@@ -6,7 +6,7 @@ app.config(function ($routeProvider) {
         controller: 'ListController', 
         templateUrl: 'views/list.html' 
       })
-      .when('/friend/:id', { 
+      .when('/friends/:friendId', { 
           controller: 'DetailsController', 
           templateUrl: 'views/details.html' 
         })

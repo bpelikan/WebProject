@@ -1,7 +1,7 @@
-app.factory('friends', ['$http', function($http) { 
+app.factory('friendDetails', ['$http', '$routeParams', function($http, $routeParams) { 
     return $http({
                 method: 'GET',
-                url: 'http://localhost:4001/friends'
+                url: 'http://localhost:4001/friends/' + $routeParams.friendId
             }).then(function (success){
                 //console.log(success);
                 return success.data;
