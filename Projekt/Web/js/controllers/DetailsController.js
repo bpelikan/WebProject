@@ -1,5 +1,6 @@
-app.controller('DetailsController', ['$scope', 'friendDetails', '$routeParams', function($scope, friendDetails, $routeParams) { 
+app.controller('DetailsController', ['$scope', 'friendDetails', function($scope, friendDetails) { 
     console.log("DetailsController");
+    
     friendDetails.then(function(data) {
         $scope.friend = data;
     });

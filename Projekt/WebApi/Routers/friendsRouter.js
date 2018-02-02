@@ -93,7 +93,7 @@ friendsRouter.put('/:friendId', (req, res, next) => {
 
 friendsRouter.post('/', (req, res, next) => {
     const receivedFriend = createElement('friends', req.body);
-    
+
     if (receivedFriend) {
         var friendToAdd = new Friend ({
             _id: new mongoose.Types.ObjectId(),

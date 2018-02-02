@@ -10,7 +10,13 @@ app.config(function ($routeProvider) {
           controller: 'DetailsController', 
           templateUrl: 'views/details.html' 
         })
+      .when('/Add', { 
+        controller: 'AddController', 
+        templateUrl: 'views/add.html' 
+      })
       .otherwise({ 
         redirectTo: '/' 
       }); 
   });
+
+ //http-server web
