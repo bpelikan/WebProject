@@ -13,11 +13,12 @@
                     <th class="col-md-2">Grupa</th>
                 </tr>
                 <tr ng-repeat="friend in friends">
-                        <td><a href="#!friends/{{ friend._id }}" >{{ friend.lastName }} {{ friend.firstName }}</a></td>
+                        <td><a href="#!friends/{{ friend._id }}">{{ friend.lastName }} {{ friend.firstName }}</a></td>
                         <td>{{ friend.phoneNumber }}</td>
-                        <td>{{ friend.group  }}</td>
+                        <td>{{ friend.group  }}</td>    
                 </tr>
             </table>
         </div>
+        <button ng-click="ctrl.reloadData()">Reload</button>
     </div>
 </div>

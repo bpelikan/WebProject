@@ -3,19 +3,19 @@
                 <a class="btn btn-block btn-default btn-lg" href="/">Wszyscy</a>
         </div> -->
         <div class="col-md-12">
-                <form name="saveData" action="#" ng-controller="AddController as ctrl">
-                        Imię:           <br/><input type="text" ng-model="addFriendModel.firstName"><br/><br/>
-                        Nazwisko:       <br/><input type="text" ng-model="addFriendModel.lastName"><br/><br/>
-                        Numer telefonu: <br/><input type="text" ng-model="addFriendModel.phoneNumber"> <br/><br/>
-                        Email:          <br/><input type="text" ng-model="addFriendModel.email"> <br/><br/>
-                        Ulica:          <br/><input type="text" ng-model="addFriendModel.street"> <br/><br/>
-                        Numer domu:     <br/><input type="text" ng-model="addFriendModel.number"> <br/><br/>
-                        Kod pocztowy:   <br/><input type="text" ng-model="addFriendModel.postalCode"> <br/><br/>
-                        Miasto:         <br/><input type="text" ng-model="addFriendModel.city"> <br/><br/>
-                        Grupa:          <br/><input type="text" ng-model="addFriendModel.group"> <br/><br/>
+                <form name="saveFriendForm" action="#" ng-controller="AddController as ctrl">
+                        Imię:           <br/><input type="text" ng-model="friendToAdd.firstName"><br/><br/>
+                        Nazwisko:       <br/><input type="text" ng-model="friendToAdd.lastName"><br/><br/>
+                        Numer telefonu: <br/><input type="text" ng-model="friendToAdd.phoneNumber"> <br/><br/>
+                        Email:          <br/><input type="text" ng-model="friendToAdd.email"> <br/><br/>
+                        Ulica:          <br/><input type="text" ng-model="friendToAdd.street"> <br/><br/>
+                        Numer domu:     <br/><input type="text" ng-model="friendToAdd.number"> <br/><br/>
+                        Kod pocztowy:   <br/><input type="text" ng-model="friendToAdd.postalCode"> <br/><br/>
+                        Miasto:         <br/><input type="text" ng-model="friendToAdd.city"> <br/><br/>
+                        Grupa:          <br/><input type="text" ng-model="friendToAdd.group"> <br/><br/>
 
-                        <input type="submit" ng-click="ctrl.saveFriend(addFriendModel)">
-                        <p>addFriend: {{ addFriendModel }}</p>
+                        <input type="submit" ng-click="ctrl.saveFriend(friendToAdd)"> 
+                        <p>addFriend: {{ friendToAdd }}</p>
                 </form>
         </div>          
 </div>

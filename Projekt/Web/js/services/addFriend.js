@@ -1,20 +1,17 @@
-app.service('addFriend', ['$http', function($http) { 
-    this.saveFriend = function(addFriendModel){
+app.service('addFriend', ['$http', '$route', function($http, $route) { 
+    this.saveFriend = function(friendToAdd){
         return $http({
             method: 'POST',
-            headers: {'Content-Type': 'application/json; charset=utf-8'},
-            //headers: {'Content-Type': 'application/x-www-form-urlencoded'},//[{"key":"Content-Type","value":"application/json","description":"","enabled":true}]
+            headers: {'Content-Type': 'application/json'},
             url: 'http://localhost:4001/friends',
-            data: addFriendModel
+            data: friendToAdd
         }).then(function (success){
-            //console.log("success:");
-            //console.log(success);
+            console.log("Add friend service");
+            $route.reload();
             return success.data;
         },function (error){
             console.log("Error during saving friends from api");
             return error;
         });
     }
-    
-    
-  }]);
+}]);

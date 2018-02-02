@@ -113,7 +113,7 @@ friendsRouter.post('/', (req, res, next) => {
             if (err) {
                 res.status(500).send('Friend couldn\'t be saved in database');
             }
-            console.log('Author successfully saved.');
+            console.log('Friend successfully saved.');
             res.status(201).json(friendToAdd);
         });
       } else {

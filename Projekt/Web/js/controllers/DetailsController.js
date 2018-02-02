@@ -1,7 +1,8 @@
 app.controller('DetailsController', ['$scope', 'friendDetails', function($scope, friendDetails) { 
     console.log("DetailsController");
     
-    friendDetails.then(function(data) {
+    friendDetails.showDetails().then(function(data) {
+        console.log(data);
         $scope.friend = data;
     });
 }]);
