@@ -28,7 +28,10 @@ var friendSchema = mongoose.Schema({
     number: String,
     postalCode: String,
     city: String,
-    group: String,
+    group: {
+        type: String,
+        required: true
+    },
     created: { 
         type: Date,
         default: Date.now
