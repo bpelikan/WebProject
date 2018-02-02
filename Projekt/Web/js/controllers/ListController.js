@@ -1,4 +1,4 @@
-app.controller('ListController', ['$scope', 'friends', 'groups', '$route', '$templateCache' /*, '$route', '$window'*/, function($scope, friends, groups, $route, $templateCache/*, $route, $window*/) {
+app.controller('ListController', ['$scope', 'friends', 'groups', '$route', function($scope, friends, groups, $route) {
     console.log("ListController");
     
     friends.showFriends().then(function(data) {

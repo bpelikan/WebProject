@@ -19,3 +19,6 @@ app.config(function ($routeProvider) {
       }); 
   });
  //http-server web
+
+ //-//npm i jquery-validation
+ //-//npm install bootstrap-validator
