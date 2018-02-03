@@ -1,0 +1,84 @@
+<div class="row panel">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+                <center><h1>Edytowanie kontaktu</h1></center>
+                <div class="panel-body well">
+                        <form data-toggle="validator" name="editFriendForm" id="editFriendForm" action="#" ng-controller="EditController as ctrl">
+                                <div class="form-group">
+                                        <div class="form-group">
+                                                <label>Imię</label>
+                                                <!-- <input ng-model="friendToEdit.firstName" placeholder="Imię" class="form-control" type="text" id="firstName" name="firstName" required /> -->
+                                                <input ng-model="friendToEdit.firstName" placeholder="{{ friend.firstName}}" class="form-control" type="text" id="firstName" name="firstName" required />
+                                                <div class="help-block with-errors"></div>
+                                        </div>
+
+                                        <div class="form-group">
+                                                <label>Nazwisko:</label>  
+                                                <input ng-model="friendToEdit.lastName" placeholder="Nazwisko" class="form-control" type="text" id="lastName" name="lastName" required />     
+                                                <div class="help-block with-errors"></div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                                <label>Numer telefonu:</label> 
+                                                <input ng-model="friendToEdit.phoneNumber" placeholder="Numer telefonu" class="form-control" pattern="(\(?(\+|00)?48\)?)?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}" type="text" id="phoneNumber" name="phoneNumber" required />
+                                                <div class="help-block with-errors"></div>
+                                        </div>
+
+                                        <div class="form-group">
+                                                <label>Email:</label>
+                                                <input ng-model="friendToEdit.email" placeholder="Email" class="form-control" type="email" id="email" name="email" data-rule-email="true" />
+                                                <div class="help-block with-errors"></div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                                <label>Ulica:</label>        
+                                                <input ng-model="friendToEdit.street" placeholder="Ulica" class="form-control" type="text" id="street" name="street" />  
+                                                <div class="help-block with-errors"></div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                                <label>Numer domu:</label>   
+                                                <input ng-model="friendToEdit.number" placeholder="Numer domu" class="form-control" type="text" id="number" name="number" /> 
+                                                <div class="help-block with-errors"></div> 
+                                        </div>
+
+
+                                        <div class="form-group">
+                                                <label>Kod pocztowy:</label>   
+                                                <input ng-model="friendToEdit.postalCode" placeholder="Kod pocztowy (12-345)" data-error="Bruh, that email address is invalid" pattern="\d{2}-\d{3}" class="form-control" type="text" id="postalCode" name="postalCode" />
+                                                <div class="help-block with-errors"></div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                                <label>Miasto:</label>         
+                                                <input ng-model="friendToEdit.city" placeholder="Miesto" class="form-control" type="text" id="city" name="city" />
+                                                <div class="help-block with-errors"></div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                                <label>Grupa:</label>       
+                                                <input ng-model="friendToEdit.group" placeholder="Grupa" pattern="[^ \n].*" class="form-control" type="text" id="group" name="group" required/>   
+                                                <div class="help-block with-errors"></div>
+                                        </div>
+                                </div>
+                                <div class="panel-footer">
+                                        <div class="pull-right">
+                                        <!-- <div class="panel-footer pull-right"> -->
+                                                <a class="btn btn-default" ng-click="ctrl.back()">Anuluj</a>
+                                                <input ng-click="ctrl.editFriend(friendToEdit)" type="submit" value="Zapisz" class="btn btn-primary">
+                                        </div>
+                                        <!-- <div class="pull-left">
+                                                <p>friendToEdit: {{ friendToEdit }}</p>
+                                        </div> -->
+                                </div>
+                                
+                        </form>
+                </div>
+        </div>   
+        <div class="col-md-2"></div>       
+</div>
