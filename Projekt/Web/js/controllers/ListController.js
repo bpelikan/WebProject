@@ -14,4 +14,5 @@ app.controller('ListController', ['$scope', 'friends', 'groups', '$route', funct
     this.reloadData = function(){
         $route.reload()
     }
+    
 }]);

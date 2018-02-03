@@ -12,8 +12,8 @@ app.controller('DetailsController', ['$scope', 'friendDetails', 'groups', 'delet
     this.deleteFriend = function() {
         deleteFriendService.deleteFriend().then(function(data) {
             //console.log(data);
-            $window.history.back();
             $route.reload();
+            $window.history.back();
         });
     }
 

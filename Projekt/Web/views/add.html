@@ -6,7 +6,7 @@
         <div class="col-md-8">
                 <center><h1>Dodawanie kontaktu</h1></center>
                 <div class="panel-body well">
-                        <form data-toggle="validator" name="saveFriendForm" id="saveFriendForm" action="#" ng-controller="AddController as ctrl">
+                        <form data-toggle="validator" name="saveFriendForm" id="saveFriendForm" action="#" ng-controller="AddController as ctrl" ng-submit="ctrl.saveFriend(friendToAdd)">
                                 <div class="form-group">
                                         <div class="form-group">
                                                 <label>Imię</label>
@@ -20,7 +20,6 @@
                                                 <div class="help-block with-errors"></div>
                                         </div>
 
-
                                         <div class="form-group">
                                                 <label>Numer telefonu:</label> 
                                                 <input ng-model="friendToAdd.phoneNumber" placeholder="Numer telefonu" class="form-control" pattern="(\(?(\+|00)?48\)?)?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}" type="text" id="phoneNumber" name="phoneNumber" required />
@@ -33,13 +32,11 @@
                                                 <div class="help-block with-errors"></div>
                                         </div>
 
-
                                         <div class="form-group">
                                                 <label>Ulica:</label>        
                                                 <input ng-model="friendToAdd.street" placeholder="Ulica" class="form-control" type="text" id="street" name="street" />  
                                                 <div class="help-block with-errors"></div>
                                         </div>
-
 
                                         <div class="form-group">
                                                 <label>Numer domu:</label>   
@@ -47,20 +44,17 @@
                                                 <div class="help-block with-errors"></div> 
                                         </div>
 
-
                                         <div class="form-group">
                                                 <label>Kod pocztowy:</label>   
                                                 <input ng-model="friendToAdd.postalCode" placeholder="Kod pocztowy (12-345)" data-error="Bruh, that email address is invalid" pattern="\d{2}-\d{3}" class="form-control" type="text" id="postalCode" name="postalCode" />
                                                 <div class="help-block with-errors"></div>
                                         </div>
 
-
                                         <div class="form-group">
                                                 <label>Miasto:</label>         
                                                 <input ng-model="friendToAdd.city" placeholder="Miesto" class="form-control" type="text" id="city" name="city" />
                                                 <div class="help-block with-errors"></div>
                                         </div>
-
 
                                         <div class="form-group">
                                                 <label>Grupa:</label>       
@@ -71,13 +65,23 @@
                                 <div class="panel-footer">
                                         <div class="pull-right">
                                         <!-- <div class="panel-footer pull-right"> -->
-                                                <button class="btn btn-default" ng-click="ctrl.back()">Anuluj</button>
+                                                <!-- <a class="btn btn-default" href="#" ng-click="ctrl.back()">Anuluj</a> -->
+                                                <a class="btn btn-default" ng-click="ctrl.back()">Anuluj</a>
+                                                <input type="submit" value="Zapisz" class="btn btn-primary" >
+                                        </div>
+                                </div>
+                                
+                                <p>addFriend: {{ friendToAdd }}</p>
+                                <!-- <div class="panel-footer">
+                                        <div class="pull-right">
+                                                
                                                 <input ng-click="ctrl.saveFriend(friendToAdd)" type="submit" value="Zapisz" class="btn btn-primary">
+                                                <button class="btn btn-default" ng-click="ctrl.back()">Anuluj</button>
                                         </div>
                                         <div class="pull-left">
                                                 <p>friendToAdd: {{ friendToAdd }}</p>
                                         </div>
-                                </div>
+                                </div> -->
                                 
                         </form>
                 </div>

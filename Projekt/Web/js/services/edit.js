@@ -1,4 +1,4 @@
-app.service('edit', ['$http', '$routeParams', function($http, $routeParams) { 
+app.service('edit', ['$http', '$routeParams', '$route', '$window', function($http, $routeParams, $route, $window) { 
     this.editFriend = function(friendToEdit){
         return $http({
             method: 'PUT',
@@ -7,6 +7,9 @@ app.service('edit', ['$http', '$routeParams', function($http, $routeParams) {
             data: friendToEdit
         }).then(function (success){
             console.log("Edit friend service");
+            $window.history.back();
+            $route.reload();
+            
             return success.data;
         },function (error){
             console.log("Error during saving friends from api");

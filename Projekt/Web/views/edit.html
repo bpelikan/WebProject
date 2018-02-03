@@ -3,7 +3,7 @@
         <div class="col-md-8">
                 <center><h1>Edytowanie kontaktu</h1></center>
                 <div class="panel-body well">
-                        <form data-toggle="validator" name="editFriendForm" id="editFriendForm" action="#" ng-controller="EditController as ctrl">
+                        <form data-toggle="validator" name="editFriendForm" id="editFriendForm" action="#" ng-controller="EditController as ctrl" ng-submit="ctrl.editFriend(friendToEdit)">
                                 <div class="form-group">
                                         <div class="form-group">
                                                 <label>Imię</label>
@@ -70,7 +70,7 @@
                                         <div class="pull-right">
                                         <!-- <div class="panel-footer pull-right"> -->
                                                 <a class="btn btn-default" ng-click="ctrl.back()">Anuluj</a>
-                                                <input ng-click="ctrl.editFriend(friendToEdit)" type="submit" value="Zapisz" class="btn btn-primary">
+                                                <input type="submit" value="Zapisz" class="btn btn-primary">
                                         </div>
                                 </div>
                                 

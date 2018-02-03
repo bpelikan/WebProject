@@ -1,4 +1,4 @@
-app.controller('EditController', ['$scope', 'friendDetails', 'edit', '$window', '$route', function($scope, friendDetails, edit, $window, $route) {
+app.controller('EditController', ['$scope', 'friendDetails', 'edit', '$route', '$window', function($scope, friendDetails, edit, $route, $window) {
     console.log("EditController");
 
     friendDetails.showDetails().then(function(data) {
@@ -9,7 +9,6 @@ app.controller('EditController', ['$scope', 'friendDetails', 'edit', '$window', 
     this.editFriend = function(friendToEdit) {
         edit.editFriend(friendToEdit).then(function(data) {
             //console.log(data);
-            $route.reload();
         });
     }
 
