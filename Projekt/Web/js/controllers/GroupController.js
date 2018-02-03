@@ -2,12 +2,12 @@ app.controller('GroupController', ['$scope', 'groups', 'groupFriends', '$route',
     console.log("GroupController");
 
     groupFriends.showFriends().then(function(data) {
-        console.log(data);
+        //console.log(data);
         $scope.friends = data;
     });
 
     groups.showGroups().then(function(data) {
-        console.log(data);
+        //console.log(data);
         $scope.groups = data;
     });
 

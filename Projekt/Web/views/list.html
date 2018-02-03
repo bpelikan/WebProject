@@ -1,6 +1,7 @@
 <div class="row panel">
     <div id="categories" class="col-md-3">
-        <a class="btn btn-block btn-default btn-lg" href="#">Wszyscy</a>
+        <a class="btn btn-block btn-default btn-lg " href="#">Wszyscy</a>
+        <!-- <a class="btn btn-block btn-default btn-lg btn-primary" href="#">Wszyscy</a> -->
         <a class="btn btn-block btn-default btn-lg" ng-repeat="group in groups" href="#!groups/{{ group }}" >{{ group }}</a>
     </div>
 
@@ -19,6 +20,6 @@
                 </tr>
             </table>
         </div>
-        <button class="btn btn-block btn-default" ng-click="ctrl.reloadData()">Reload</button>
+        <a class="btn btn-block btn-default" ng-click="ctrl.reloadData()" href="/">Reload</a>
     </div>
 </div>

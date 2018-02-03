@@ -2,12 +2,12 @@ app.controller('DetailsController', ['$scope', 'friendDetails', 'groups', '$wind
     console.log("DetailsController");
 
     groups.showGroups().then(function(data) {
-        console.log(data);
+        //console.log(data);
         $scope.groups = data;
     });
 
     friendDetails.showDetails().then(function(data) {
-        console.log(data);
+        //console.log(data);
         $scope.friend = data;
     });
 

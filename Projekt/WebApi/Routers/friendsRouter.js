@@ -111,7 +111,6 @@ friendsRouter.put('/:friendId', (req, res, next) => {
                 if (err) {
                     res.status(500).send('Friend  couldn\'t be saved in database');
                 }
-            
                 res.json(friend);
         });
       } else {
@@ -135,7 +134,6 @@ friendsRouter.post('/', (req, res, next) => {
             city: receivedFriend.city,
             group: receivedFriend.group,
         });
-        
         
         friendToAdd.save(function(err) {
             if (err) {

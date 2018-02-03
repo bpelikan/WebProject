@@ -3,7 +3,7 @@ app.controller('AddController', ['$scope', 'addFriend', '$window', function($sco
 
     this.saveFriend = function(friendToAdd) {
         addFriend.saveFriend(friendToAdd).then(function(data) {
-            console.log(data);
+            //console.log(data);
         });
     }
 
