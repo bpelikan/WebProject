@@ -3,106 +3,81 @@
                 <a class="btn btn-block btn-default btn-lg" href="/">Wszyscy</a>
         </div> -->
         <div class="col-md-12">
-                <h1>Dodawanie kontaktu</h1>
-                <div class="panel-body">
-                        <form data-toggle="validator" name="saveFriendForm" id="saveFriendForm" action="#" ng-controller="AddController as ctrl">
-                                
+                <center><h1>Dodawanie kontaktu</h1></center>
+                
+                <form data-toggle="validator" name="saveFriendForm" id="saveFriendForm" action="#" ng-controller="AddController as ctrl">
+                        <div class="form-group">
                                 <div class="form-group">
                                         <label>Imię</label>
-                                        <input placeholder="Imię" class="form-control" type="text" id="firstName" name="firstName" required />
-                                        <!-- <br/><input type="text" ng-model="friendToAdd.firstName"><br/><br/> -->
-                                        <!-- <input ng-model="friendToAdd.firstName" class="form-control" data-val="true" data-val-regex="Nieprawidłowe imię." data-val-regex-pattern="^[a-zA-Z ęóąśłżźćńĘÓĄŚŁŻŹĆŃ]*$" data-val-required="Proszę podać imię." id="FirstName" name="FirstName" type="text" value="" /> -->
-                                        <!-- <span class="field-validation-valid" data-valmsg-for="FirstName" data-valmsg-replace="true"></span> -->
+                                        <input ng-model="friendToAdd.firstName" placeholder="Imię" class="form-control" type="text" id="firstName" name="firstName" required />
                                 </div>
 
                                 <div class="form-group">
                                         <label>Nazwisko:</label>  
-                                        <input placeholder="Nazwisko" class="form-control" type="text" id="lastName" name="lastName" required />     
-                                        <!-- <br/><input type="text" ng-model="friendToAdd.lastName"><br/><br/> -->
-                                        <!-- <input class="form-control" data-val="true" data-val-regex="Nieprawidłowe nazwisko." data-val-regex-pattern="^[a-zA-Z ęóąśłżźćńĘÓĄŚŁŻŹĆŃ]*$" data-val-required="Proszę podać nazwisko." id="LastName" name="LastName" type="text" value="" /> -->
-                                        <!-- <span class="field-validation-valid" data-valmsg-for="LastName" data-valmsg-replace="true"></span> -->
+                                        <input ng-model="friendToAdd.lastName" placeholder="Nazwisko" class="form-control" type="text" id="lastName" name="lastName" required />     
                                 </div>
 
 
                                 <div class="form-group">
                                         <label>Numer telefonu:</label> 
-                                        <input placeholder="Numer telefonu" class="form-control" pattern="(\(?(\+|00)?48\)?)?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}" type="text" id="phoneNumber" name="phoneNumber" required />
+                                        <input ng-model="friendToAdd.phoneNumber" placeholder="Numer telefonu" class="form-control" pattern="(\(?(\+|00)?48\)?)?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}" type="text" id="phoneNumber" name="phoneNumber" required />
                                         <div class="help-block with-errors"></div>
-                                        <!-- <br/><input type="text" ng-model="friendToAdd.phoneNumber"> <br/><br/> -->
-                                        <!-- <input class="form-control" data-val="true" data-val-maxlength="Numer telefonu nie możę być dłuższy niż 9 cyfr." data-val-maxlength-max="9" data-val-minlength="Numer telefonu nie może być krótszy niż 9 cyfr." data-val-minlength-min="9" data-val-regex="Proszę wpisać poprawny numer telefonu." data-val-regex-pattern="([0-9]+)" id="PhoneNumber" name="PhoneNumber" type="text" value="" /> -->
-                                        <!-- <span class="field-validation-valid" data-valmsg-for="PhoneNumber" data-valmsg-replace="true"></span> -->
                                 </div>
 
                                 <div class="form-group">
                                         <label>Email:</label>
-                                        <input placeholder="Email" class="form-control" type="email" id="email" name="email" data-rule-email="true" />
+                                        <input ng-model="friendToAdd.email" placeholder="Email" class="form-control" type="email" id="email" name="email" data-rule-email="true" />
                                         <div class="help-block with-errors"></div>
-                                        <!-- <br/><input type="text" ng-model="friendToAdd.email"> <br/><br/> -->
-                                        <!-- <input class="form-control" data-val="true" data-val-email="Podaj prawidłowy adres email." id="Email" name="Email" type="text" value="" /> -->
-                                        <!-- <span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span> -->
                                 </div>
 
 
                                 <div class="form-group">
                                         <label>Ulica:</label>        
-                                        <input placeholder="Ulica" class="form-control" type="text" id="street" name="street" />  
+                                        <input ng-model="friendToAdd.street" placeholder="Ulica" class="form-control" type="text" id="street" name="street" />  
                                         <div class="help-block with-errors"></div>
-                                        <!-- <br/><input type="text" ng-model="friendToAdd.street"> <br/><br/> -->
-                                        <!-- <textarea class="form-control" cols="20" id="Street" name="Street" rows="5"></textarea> -->
-                                        <!-- <span class="field-validation-valid" data-valmsg-for="Street" data-valmsg-replace="true"></span> -->
                                 </div>
 
 
                                 <div class="form-group">
                                         <label>Numer domu:</label>   
-                                        <input placeholder="Numer domu" class="form-control" type="text" id="number" name="number" /> 
+                                        <input ng-model="friendToAdd.number" placeholder="Numer domu" class="form-control" type="text" id="number" name="number" /> 
                                         <div class="help-block with-errors"></div> 
-                                        <!-- <br/><input type="text" ng-model="friendToAdd.number"> <br/><br/> -->
-                                        <!-- <input class="form-control" id="Number" name="Number" type="text" value="" /> -->
-                                        <!-- <span class="field-validation-valid" data-valmsg-for="Number" data-valmsg-replace="true"></span> -->
                                 </div>
 
 
                                 <div class="form-group">
                                         <label>Kod pocztowy:</label>   
-                                        <input placeholder="Kod pocztowy (12-345)" data-error="Bruh, that email address is invalid" pattern="\d{2}-\d{3}" class="form-control" type="text" id="postalCode" name="postalCode" />
+                                        <input ng-model="friendToAdd.postalCode" placeholder="Kod pocztowy (12-345)" data-error="Bruh, that email address is invalid" pattern="\d{2}-\d{3}" class="form-control" type="text" id="postalCode" name="postalCode" />
                                         <div class="help-block with-errors"></div>
-                                        <!-- <br/><input type="text" ng-model="friendToAdd.postalCode"> <br/><br/> -->
-                                        <!-- <input class="form-control" data-val="true" data-val-regex="Podaj prawidłowy kod pocztowy." data-val-regex-pattern="\d{2}-\d{3}" id="PostalCode" name="PostalCode" type="text" value="" /> -->
-                                        <!-- <span class="field-validation-valid" data-valmsg-for="PostalCode" data-valmsg-replace="true"></span> -->
                                 </div>
 
 
                                 <div class="form-group">
                                         <label>Miasto:</label>         
-                                        <input placeholder="Miesto" class="form-control" type="text" id="city" name="city" />
+                                        <input ng-model="friendToAdd.city" placeholder="Miesto" class="form-control" type="text" id="city" name="city" />
                                         <div class="help-block with-errors"></div>
-                                        <!-- <br/><input type="text" ng-model="friendToAdd.city"> <br/><br/> -->
-                                        <!-- <input class="form-control" data-val="true" data-val-regex="Podaj prawidłową nazwę miasta." data-val-regex-pattern="^[a-zA-Z ęóąśłżźćńĘÓĄŚŁŻŹĆŃ]*$" id="City" name="City" type="text" value="" /> -->
-                                        <!-- <span class="field-validation-valid" data-valmsg-for="City" data-valmsg-replace="true"></span> -->
                                 </div>
 
 
                                 <div class="form-group">
                                         <label>Grupa:</label>       
-                                        <input placeholder="Grupa" pattern="[^ \n].*" class="form-control" type="text" id="group" name="group" required/>   
+                                        <input ng-model="friendToAdd.group" placeholder="Grupa" pattern="[^ \n].*" class="form-control" type="text" id="group" name="group" required/>   
                                         <div class="help-block with-errors"></div>
-                                        <!-- <br/><input type="text" ng-model="friendToAdd.group"> <br/><br/> -->
-                                        <!-- <input class="form-control" data-val="true" data-val-required="Proszę podać grupę." id="Group" name="Group" type="text" value="" /> -->
-                                        <!-- <span class="field-validation-valid" data-valmsg-for="Group" data-valmsg-replace="true"></span> -->
                                 </div>
-                                
-                                <input type="submit" value="Zapisz" class="btn btn-primary">
+                        </div>
+                        <div class="panel-footer">
+                                <input ng-click="ctrl.saveFriend(friendToAdd)" type="submit" value="Zapisz" class="btn btn-primary">
                                 <a class="btn btn-default" href="#">Anuluj</a>
-                                <!-- <input type="submit" ng-click="ctrl.saveFriend(friendToAdd)">  -->
-                                <p>addFriend: {{ friendToAdd }}</p>
-                        </form>
-                        <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.js"></script> -->
-                        <!-- <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script> -->
+                        </div>
+                        <!-- <input type="submit" ng-click="ctrl.saveFriend(friendToAdd)">  -->
+                        <p>addFriend: {{ friendToAdd }}</p>
+                </form>
+                <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.js"></script> -->
+                <!-- <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script> -->
 
-                        <!-- <script type="text/javascript">
-                                $('#saveFriendForm').validate();
-                        </script> -->
-                </div>
+                <!-- <script type="text/javascript">
+                        $('#saveFriendForm').validate();
+                </script> -->
+        
         </div>          
 </div>
