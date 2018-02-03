@@ -66,6 +66,31 @@ groupsRouter.get("/", (req, res, next) => {
     });
 })
 
+groupsRouter.get("/:groupName", (req, res, next) => {
+    Friend.find({ group: req.params.groupName}, function(err, friend) {
+        if (err) {
+            res.status(500).send('Couldn\'t get friends with this group from database');
+        }
+        res.json(friend);
+    });
+    
+    // var query = Friend.find({ group: req.params.groupName})
+    // query.skip(1);
+
+    // var query = Friend.find({})
+    // query.where('group', req.params.groupName);
+    // query.skip(1);
+
+    // query.exec(function(err, friend) {
+    //     if (err) {
+    //         res.status(500).send('Couldn\'t get friends with this group from database');
+    //     }
+    //     res.json(friend);
+    // });
+
+    // 
+})
+
 friendsRouter.get("/:friendId", (req, res, next) => {
     Friend.findById(req.params.friendId, function(err, friend) {
         if (err) {
