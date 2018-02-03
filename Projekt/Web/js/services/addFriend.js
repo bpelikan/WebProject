@@ -1,4 +1,4 @@
-app.service('addFriend', ['$http', '$route', function($http, $route) { 
+app.service('addFriend', ['$http', function($http) { 
     this.saveFriend = function(friendToAdd){
         return $http({
             method: 'POST',
@@ -7,7 +7,6 @@ app.service('addFriend', ['$http', '$route', function($http, $route) {
             data: friendToAdd
         }).then(function (success){
             console.log("Add friend service");
-            $route.reload();
             return success.data;
         },function (error){
             console.log("Error during saving friends from api");

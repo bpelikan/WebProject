@@ -6,7 +6,7 @@ app.service('deleteFriendService', ['$http', '$routeParams', function($http, $ro
             url: 'http://localhost:4001/friends/' + $routeParams.friendId
         }).then(function (success){
             console.log("Delete friend service");
-            console.log(success);
+            //console.log(success);
             return success.data;
         },function (error){
             console.log("Error during saving friends from api");

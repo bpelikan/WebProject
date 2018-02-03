@@ -14,10 +14,6 @@ app.config(function ($routeProvider) {
         controller: 'EditController as ctrl', 
         templateUrl: 'views/edit.html' 
       })
-      .when('/delete/:friendId', { 
-        controller: 'DeleteController as ctrl', 
-        templateUrl: 'views/delete.html' 
-      })
       .when('/groups/:groupName', { 
         controller: 'GroupController as ctrl', 
         templateUrl: 'views/list.html' 
