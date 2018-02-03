@@ -7,8 +7,7 @@
                                 <div class="form-group">
                                         <div class="form-group">
                                                 <label>Imię</label>
-                                                <!-- <input ng-model="friendToEdit.firstName" placeholder="Imię" class="form-control" type="text" id="firstName" name="firstName" required /> -->
-                                                <input ng-model="friendToEdit.firstName" placeholder="{{ friend.firstName}}" class="form-control" type="text" id="firstName" name="firstName" required />
+                                                <input ng-model="friendToEdit.firstName" placeholder="Imię" class="form-control" type="text" id="firstName" name="firstName" required />
                                                 <div class="help-block with-errors"></div>
                                         </div>
 
@@ -68,12 +67,10 @@
                                 </div>
                                 <div class="panel-footer">
                                         <div class="pull-right">
-                                        <!-- <div class="panel-footer pull-right"> -->
                                                 <a class="btn btn-default" ng-click="ctrl.back()">Anuluj</a>
                                                 <input type="submit" value="Zapisz" class="btn btn-primary">
                                         </div>
                                 </div>
-                                
                         </form>
                 </div>
         </div>   
