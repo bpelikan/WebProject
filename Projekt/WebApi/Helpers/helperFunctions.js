@@ -3,11 +3,11 @@ const createElement = (elementType, queryArguments) => {
     if (queryArguments.hasOwnProperty('firstName') &&
         queryArguments.hasOwnProperty('lastName') &&
         queryArguments.hasOwnProperty('phoneNumber') &&
-        queryArguments.hasOwnProperty('email') &&
-        queryArguments.hasOwnProperty('street') &&
-        queryArguments.hasOwnProperty('number') &&
-        queryArguments.hasOwnProperty('postalCode') &&
-        queryArguments.hasOwnProperty('city') &&
+        // queryArguments.hasOwnProperty('email') &&
+        // queryArguments.hasOwnProperty('street') &&
+        // queryArguments.hasOwnProperty('number') &&
+        // queryArguments.hasOwnProperty('postalCode') &&
+        // queryArguments.hasOwnProperty('city') &&
         queryArguments.hasOwnProperty('group') && elementType === 'friends') {
             return {
                 'firstName': queryArguments.firstName,

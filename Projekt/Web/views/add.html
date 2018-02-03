@@ -2,82 +2,77 @@
         <!-- <div id="categories" class="col-md-3">
                 <a class="btn btn-block btn-default btn-lg" href="/">Wszyscy</a>
         </div> -->
-        <div class="col-md-12">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
                 <center><h1>Dodawanie kontaktu</h1></center>
-                
-                <form data-toggle="validator" name="saveFriendForm" id="saveFriendForm" action="#" ng-controller="AddController as ctrl">
-                        <div class="form-group">
+                <div class="panel-body well">
+                        <form data-toggle="validator" name="saveFriendForm" id="saveFriendForm" action="#" ng-controller="AddController as ctrl">
                                 <div class="form-group">
-                                        <label>Imię</label>
-                                        <input ng-model="friendToAdd.firstName" placeholder="Imię" class="form-control" type="text" id="firstName" name="firstName" required />
+                                        <div class="form-group">
+                                                <label>Imię</label>
+                                                <input ng-model="friendToAdd.firstName" placeholder="Imię" class="form-control" type="text" id="firstName" name="firstName" required />
+                                        </div>
+
+                                        <div class="form-group">
+                                                <label>Nazwisko:</label>  
+                                                <input ng-model="friendToAdd.lastName" placeholder="Nazwisko" class="form-control" type="text" id="lastName" name="lastName" required />     
+                                        </div>
+
+
+                                        <div class="form-group">
+                                                <label>Numer telefonu:</label> 
+                                                <input ng-model="friendToAdd.phoneNumber" placeholder="Numer telefonu" class="form-control" pattern="(\(?(\+|00)?48\)?)?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}" type="text" id="phoneNumber" name="phoneNumber" required />
+                                                <div class="help-block with-errors"></div>
+                                        </div>
+
+                                        <div class="form-group">
+                                                <label>Email:</label>
+                                                <input ng-model="friendToAdd.email" placeholder="Email" class="form-control" type="email" id="email" name="email" data-rule-email="true" />
+                                                <div class="help-block with-errors"></div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                                <label>Ulica:</label>        
+                                                <input ng-model="friendToAdd.street" placeholder="Ulica" class="form-control" type="text" id="street" name="street" />  
+                                                <div class="help-block with-errors"></div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                                <label>Numer domu:</label>   
+                                                <input ng-model="friendToAdd.number" placeholder="Numer domu" class="form-control" type="text" id="number" name="number" /> 
+                                                <div class="help-block with-errors"></div> 
+                                        </div>
+
+
+                                        <div class="form-group">
+                                                <label>Kod pocztowy:</label>   
+                                                <input ng-model="friendToAdd.postalCode" placeholder="Kod pocztowy (12-345)" data-error="Bruh, that email address is invalid" pattern="\d{2}-\d{3}" class="form-control" type="text" id="postalCode" name="postalCode" />
+                                                <div class="help-block with-errors"></div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                                <label>Miasto:</label>         
+                                                <input ng-model="friendToAdd.city" placeholder="Miesto" class="form-control" type="text" id="city" name="city" />
+                                                <div class="help-block with-errors"></div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                                <label>Grupa:</label>       
+                                                <input ng-model="friendToAdd.group" placeholder="Grupa" pattern="[^ \n].*" class="form-control" type="text" id="group" name="group" required/>   
+                                                <div class="help-block with-errors"></div>
+                                        </div>
                                 </div>
-
-                                <div class="form-group">
-                                        <label>Nazwisko:</label>  
-                                        <input ng-model="friendToAdd.lastName" placeholder="Nazwisko" class="form-control" type="text" id="lastName" name="lastName" required />     
+                                <div class="panel-footer ">
+                                        <input ng-click="ctrl.saveFriend(friendToAdd)" type="submit" value="Zapisz" class="btn btn-primary">
+                                        <a class="btn btn-default" href="#">Anuluj</a>
                                 </div>
-
-
-                                <div class="form-group">
-                                        <label>Numer telefonu:</label> 
-                                        <input ng-model="friendToAdd.phoneNumber" placeholder="Numer telefonu" class="form-control" pattern="(\(?(\+|00)?48\)?)?[ -]?\d{3}[ -]?\d{3}[ -]?\d{3}" type="text" id="phoneNumber" name="phoneNumber" required />
-                                        <div class="help-block with-errors"></div>
-                                </div>
-
-                                <div class="form-group">
-                                        <label>Email:</label>
-                                        <input ng-model="friendToAdd.email" placeholder="Email" class="form-control" type="email" id="email" name="email" data-rule-email="true" />
-                                        <div class="help-block with-errors"></div>
-                                </div>
-
-
-                                <div class="form-group">
-                                        <label>Ulica:</label>        
-                                        <input ng-model="friendToAdd.street" placeholder="Ulica" class="form-control" type="text" id="street" name="street" />  
-                                        <div class="help-block with-errors"></div>
-                                </div>
-
-
-                                <div class="form-group">
-                                        <label>Numer domu:</label>   
-                                        <input ng-model="friendToAdd.number" placeholder="Numer domu" class="form-control" type="text" id="number" name="number" /> 
-                                        <div class="help-block with-errors"></div> 
-                                </div>
-
-
-                                <div class="form-group">
-                                        <label>Kod pocztowy:</label>   
-                                        <input ng-model="friendToAdd.postalCode" placeholder="Kod pocztowy (12-345)" data-error="Bruh, that email address is invalid" pattern="\d{2}-\d{3}" class="form-control" type="text" id="postalCode" name="postalCode" />
-                                        <div class="help-block with-errors"></div>
-                                </div>
-
-
-                                <div class="form-group">
-                                        <label>Miasto:</label>         
-                                        <input ng-model="friendToAdd.city" placeholder="Miesto" class="form-control" type="text" id="city" name="city" />
-                                        <div class="help-block with-errors"></div>
-                                </div>
-
-
-                                <div class="form-group">
-                                        <label>Grupa:</label>       
-                                        <input ng-model="friendToAdd.group" placeholder="Grupa" pattern="[^ \n].*" class="form-control" type="text" id="group" name="group" required/>   
-                                        <div class="help-block with-errors"></div>
-                                </div>
-                        </div>
-                        <div class="panel-footer">
-                                <input ng-click="ctrl.saveFriend(friendToAdd)" type="submit" value="Zapisz" class="btn btn-primary">
-                                <a class="btn btn-default" href="#">Anuluj</a>
-                        </div>
-                        <!-- <input type="submit" ng-click="ctrl.saveFriend(friendToAdd)">  -->
-                        <p>addFriend: {{ friendToAdd }}</p>
-                </form>
-                <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.js"></script> -->
-                <!-- <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script> -->
-
-                <!-- <script type="text/javascript">
-                        $('#saveFriendForm').validate();
-                </script> -->
-        
-        </div>          
+                                <p>addFriend: {{ friendToAdd }}</p>
+                        </form>
+                </div>
+        </div>   
+        <div class="col-md-2"></div>       
 </div>
