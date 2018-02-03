@@ -1,9 +1,14 @@
-app.controller('AddController', ['$scope', 'addFriend', function($scope , addFriend) {
+app.controller('AddController', ['$scope', 'addFriend', '$window', function($scope , addFriend, $window) {
     console.log("AddController");
 
     this.saveFriend = function(friendToAdd) {
         addFriend.saveFriend(friendToAdd).then(function(data) {
             console.log(data);
         });
+    }
+
+    this.back = function(){
+        console.log("back");
+        $window.history.back();
     }
 }]);

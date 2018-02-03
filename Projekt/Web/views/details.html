@@ -2,7 +2,7 @@
         <div >
                 <div id="categories" class="col-md-3">
                 <a class="btn btn-block btn-default btn-lg" href="#">Wszyscy</a>
-                <a class="btn btn-block btn-default btn-lg" ng-repeat="group in groups" >{{ group }}</a>
+                <a class="btn btn-block btn-default btn-lg" ng-repeat="group in groups" href="#!groups/{{ group }}" >{{ group }}</a>
         </div>
         </div>
         <div class="col-md-8">
@@ -72,7 +72,8 @@
                                 
                         </dl>
                 </div>
-                <a class="btn btn-block btn-default btn-lg" href="#">Wr&#243;ć</a>
+                <a class="btn btn-block btn-default btn-lg" ng-click="ctrl.back()" >Wr&#243;ć</a>
+                <!-- <a class="btn btn-block btn-default btn-lg" href="#" >Wr&#243;ć</a> -->
         </div>
         <div class="col-md-1"></div>
 </div>
