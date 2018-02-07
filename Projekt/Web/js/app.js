@@ -31,5 +31,7 @@ app.config(function ($routeProvider) {
  //-//npm i jquery-validation
  //-//npm install bootstrap-validator
 
- //powrót do wcześniejszego stanu/miejsca
- //walidacja danych
+//powrót do wcześniejszego stanu/miejsca
+//walidacja danych
+//sortowanie kolumn - ikony
+//scrollowana tabela
