@@ -1,5 +1,7 @@
-app.controller('GroupController', ['$scope', 'groups', 'groupFriends', '$route', function($scope, groups, groupFriends, $route) {
+app.controller('GroupController', ['$scope', 'groups', 'groupFriends', '$route', '$routeParams', function($scope, groups, groupFriends, $route, $routeParams) {
     console.log("GroupController");
+    
+    $scope.idSelectedGroup = $routeParams.groupName;
 
     groupFriends.showFriends().then(function(data) {
         //console.log(data);
