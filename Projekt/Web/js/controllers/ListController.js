@@ -23,6 +23,10 @@ app.controller('ListController', ['$scope', 'friends', 'groups', '$route', funct
         $scope.groups = data;
     });
 
+    this.reloadData = function(){
+        $route.reload();
+    }
+
     this.sortByName = function(){
         console.log('sorting by name...');
         if($scope.isSortingColumn.name){
@@ -63,7 +67,7 @@ app.controller('ListController', ['$scope', 'friends', 'groups', '$route', funct
     }
 
     this.sortByGroup = function(){
-        console.log('sorting by phone number...');
+        console.log('sorting by group...');
 
         if($scope.isSortingColumn.group){
             $scope.sortingByGroup = !$scope.sortingByGroup;
@@ -80,10 +84,6 @@ app.controller('ListController', ['$scope', 'friends', 'groups', '$route', funct
                 group: true
             }
         }   
-    }
-
-    this.reloadData = function(){
-        $route.reload();
     }
     
     function compareByName(a,b) {
