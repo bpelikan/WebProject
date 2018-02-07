@@ -9,8 +9,8 @@ app.controller('ListController', ['$scope', 'friends', 'groups', '$route', funct
         group: false
     }
     $scope.sortingByNameDescending = false;
-    $scope.sortingByPhoneNumber = false;
-    $scope.sortingByGroup = false;
+    $scope.sortingByPhoneNumberDescending = false;
+    $scope.sortingByGroupDescending = false;
 
     friends.showFriends().then(function(data) {
         //console.log(data);
@@ -50,7 +50,7 @@ app.controller('ListController', ['$scope', 'friends', 'groups', '$route', funct
         console.log('sorting by phone number...');
 
         if($scope.isSortingColumn.phoneNumber){
-            $scope.sortingByPhoneNumber = !$scope.sortingByPhoneNumber;
+            $scope.sortingByPhoneNumberDescending = !$scope.sortingByPhoneNumberDescending;
             $scope.friends = $scope.friends.reverse();
         }
         else{
@@ -70,7 +70,7 @@ app.controller('ListController', ['$scope', 'friends', 'groups', '$route', funct
         console.log('sorting by group...');
 
         if($scope.isSortingColumn.group){
-            $scope.sortingByGroup = !$scope.sortingByGroup;
+            $scope.sortingByGroupDescending = !$scope.sortingByGroupDescending;
             $scope.friends = $scope.friends.reverse();
         }
         else{
