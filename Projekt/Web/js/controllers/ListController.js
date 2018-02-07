@@ -60,9 +60,6 @@ app.controller('ListController', ['$scope', 'friends', 'groups', '$route', funct
                 group: false
             }
         }   
-
-        
-
     }
 
     this.sortByGroup = function(){

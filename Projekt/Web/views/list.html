@@ -2,7 +2,7 @@
     <div id="categories" class="col-md-3">
         <a class="btn btn-block btn-default btn-lg " href="#" ng-class="{'btn-primary': idSelectedGroup === null}">Wszyscy</a>
         <!-- <a class="btn btn-block btn-default btn-lg btn-primary" href="#">Wszyscy</a> -->
-        <a class="btn btn-block btn-default btn-lg" ng-repeat="group in groups" href="#!groups/{{ group }}" ng-click="setSelected(group)" ng-class="{'btn-primary': group === idSelectedGroup}">{{ group }}</a>
+        <a class="btn btn-block btn-default btn-lg" ng-repeat="group in groups" href="#!groups/{{ group }}" ng-class="{'btn-primary': group === selectedGroup}">{{ group }}</a>
     </div>
 
     <div id="workingDiv" class="col-md-8">
