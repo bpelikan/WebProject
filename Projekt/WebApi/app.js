@@ -28,7 +28,9 @@ app.use(function (req, res, next) {
     next();
 });
 
+
 app.use(logger('dev')); 
+// app.use(logger(':date[clf] :method :url :status :response-time ms - :res[content-length]'));
 
 app.use('/friends', friendsRouter);
 
