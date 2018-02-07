@@ -7,12 +7,11 @@
 
     <div id="workingDiv" class="col-md-8">
         <div class="row panel-body">
-            <!-- current {{ currentGroup }}, ,,{{ idSelectedGroup }}" -->
             <table id="friendsListTable" class="well table table-hover table-bordered ">
                 <tr>
-                    <th class="col-md-5">Nazwisko i Imię</th>
-                    <th class="col-md-2">Numer Telefonu</th>
-                    <th class="col-md-2">Grupa</th>
+                    <th class="col-md-5" ng-click="ctrl.sortByName()">Nazwisko i Imię <small ng-if="isSortingColumn.name" >{{ sortingByNameDescending ? "/\\" : "\\/" }}</small></th>
+                    <th class="col-md-2" ng-click="ctrl.sortByPhoneNumber()">Numer Telefonu <small ng-if="isSortingColumn.phoneNumber" >{{ sortingByPhoneNumber ? "/\\" : "\\/" }}</small></th>
+                    <th class="col-md-2" ng-click="ctrl.sortByGroup()">Grupa <small ng-if="isSortingColumn.group" >{{ sortingByGroup ? "/\\" : "\\/" }}</small></th>
                 </tr>
                 <tr ng-repeat="friend in friends">
                         <td><a href="#!friends/{{ friend._id }}">{{ friend.lastName }} {{ friend.firstName }}</a></td>
