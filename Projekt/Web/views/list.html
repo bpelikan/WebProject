@@ -5,27 +5,28 @@
         <a class="btn btn-block btn-default btn-lg" ng-repeat="group in groups" href="#!groups/{{ group }}" ng-class="{'btn-primary': group === selectedGroup}">{{ group }}</a>
     </div>
 
-    <div id="workingDiv" class="col-md-8">
-        <div class="row panel-body">
-            <table id="friendsListTable" class="well table table-hover table-bordered">
-                <thead>
+    <!-- <div id="workingDiv" class="col-md-8"> -->
+    <div class="col-md-8 ">
+        <div class="row panel-body ">
+            <!-- <table id="friendsListTable" class="well table table-hover table-bordered"> -->
+            <!-- <div >  -->
+            <table id="friendsListTable" class="well table table-hover table-bordered table-scroll " >
+                <thead class="test">
                     <tr>
-                        <!-- <th class="col-md-5" ng-click="ctrl.sortByName()">Nazwisko i Imię <small ng-if="isSortingColumn.name" >{{ sortingByNameDescending ? "/\\" : "\\/" }}</small></th> -->
-                        <!-- <th class="col-md-5" ng-click="ctrl.sortByName()">Nazwisko i Imię <span ng-if="isSortingColumn.name" class="glyphicon glyphicon-sort-by-alphabet"></span></th> -->
                         <th class="col-md-5" ng-click="ctrl.sortByName()">Nazwisko i Imię <span ng-if="isSortingColumn.name" class="glyphicon" ng-class="sortingByNameDescending ? 'glyphicon-sort-by-alphabet-alt' : 'glyphicon-sort-by-alphabet'"></span></th>
                         <th class="col-md-2" ng-click="ctrl.sortByPhoneNumber()">Numer Telefonu <span ng-if="isSortingColumn.phoneNumber" class="glyphicon" ng-class="sortingByPhoneNumberDescending ? 'glyphicon glyphicon-sort-by-order-alt' : 'glyphicon glyphicon-sort-by-order'"></span></th>
-                        <!-- <th class="col-md-2" ng-click="ctrl.sortByGroup()">Grupa <small ng-if="isSortingColumn.group" >{{ sortingByGroup ? "/\\" : "\\/" }}</small></th> -->
                         <th class="col-md-2" ng-click="ctrl.sortByGroup()">Grupa <span ng-if="isSortingColumn.group" class="glyphicon" ng-class="sortingByGroupDescending ? 'glyphicon-sort-by-alphabet-alt' : 'glyphicon-sort-by-alphabet'"></span></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody >
                     <tr ng-repeat="friend in friends">
-                            <td><a href="#!friends/{{ friend._id }}">{{ friend.lastName }} {{ friend.firstName }}</a></td>
-                            <td>{{ friend.phoneNumber }}</td>
-                            <td>{{ friend.group  }}</td>    
+                            <td class="col-md-5" ><a href="#!friends/{{ friend._id }}">{{ friend.lastName }} {{ friend.firstName }}</a></td>
+                            <td class="col-md-2" >{{ friend.phoneNumber }}</td>
+                            <td class="col-md-2" >{{ friend.group  }}</td>    
                     </tr>
                 </tbody>
             </table>
+            <!-- </div> -->
         </div>
         
         <div class="pull-right">
