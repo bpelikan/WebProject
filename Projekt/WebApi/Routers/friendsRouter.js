@@ -116,12 +116,16 @@ friendsRouter.get("/search/:friendString", (req, res, next) => {
     //     }
     //     res.json(friend);
     // });
-    .find({ $or:[ {'firstName':{ $regex: '.*'+req.params.friendString+'.*' }}, {'lastName':{ $regex: '.*'+req.params.friendString+'.*' }}, {'phoneNumber':{ $regex: '.*'+req.params.friendString+'.*' }}]},function(err, friend) {
-        if (err) {
-            res.status(500).send('Couldn\'t get friend with this id from database');
-        }
-        var uniqueItems = [...new Set(friend)]
-        res.json(uniqueItems);
+    .find({ $or:[ 
+        {'firstName':{ $regex: '.*'+req.params.friendString+'.*' }}, 
+        {'lastName':{ $regex: '.*'+req.params.friendString+'.*' }}, 
+        {'phoneNumber':{ $regex: '.*'+req.params.friendString+'.*' }}
+        ]},function(err, friend) {
+            if (err) {
+                res.status(500).send('Couldn\'t get friend with this id from database');
+            }
+            var uniqueFriend = [...new Set(friend)]
+            res.json(uniqueFriend);
     });
     
     

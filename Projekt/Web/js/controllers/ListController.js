@@ -23,9 +23,14 @@ app.controller('ListController', ['$scope', 'friends', 'groups', '$route', funct
         $scope.groups = data;
     });
 
+    this.searchFriend = function(friendToSearch) {
+        console.log(friendToSearch);
+    };
+
+
     this.reloadData = function(){
         $route.reload();
-    }
+    };
 
     this.sortByName = function(){
         console.log('sorting by name...');
@@ -44,7 +49,7 @@ app.controller('ListController', ['$scope', 'friends', 'groups', '$route', funct
                 group: false
             }
         }        
-    }
+    };
 
     this.sortByPhoneNumber = function(){
         console.log('sorting by phone number...');
@@ -64,7 +69,7 @@ app.controller('ListController', ['$scope', 'friends', 'groups', '$route', funct
                 group: false
             }
         }   
-    }
+    };
 
     this.sortByGroup = function(){
         console.log('sorting by group...');
@@ -84,22 +89,22 @@ app.controller('ListController', ['$scope', 'friends', 'groups', '$route', funct
                 group: true
             }
         }   
-    }
+    };
     
     function compareByName(a,b) {
         if(compareString(a.lastName,b.lastName))
             return compareString(a.lastName,b.lastName);
         else
             return compareString(a.firstName,b.firstName)
-    }
+    };
 
     function compareByPhoneNumber(a,b) {
         return compareString(a.phoneNumber,b.phoneNumber)
-    }
+    };
 
     function compareByGroup(a,b) {
         return compareString(a.group,b.group)
-    }
+    };
 
     function compareString(a,b) {
         if (a.toUpperCase() < b.toUpperCase())
@@ -107,7 +112,7 @@ app.controller('ListController', ['$scope', 'friends', 'groups', '$route', funct
         if (a.toUpperCase() > b.toUpperCase())
           return 1;
         return 0;
-    }
+    };
 }]);
 
 
