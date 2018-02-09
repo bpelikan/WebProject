@@ -1,10 +1,13 @@
 <div class="row panel">
+    
     <div id="categories" class="col-md-3">
         <div id="categoriesHead">
-            <a id="categoryWszyscy" class="btn btn-block btn-default btn-lg" href="#" ng-class="{'btn-primary': idSelectedGroup === null}">Wszyscy</a>
+            <a class="btn btn-block btn-default btn-lg" href="#" ng-class="{'btn-primary': idSelectedGroup === null}">Wszyscy</a>
         </div>
+        <br/>
+        <!-- <h6></h6> -->
         <div id="categoriesBody">
-            <a id="category{{group}}" class="btn btn-block btn-default btn-lg" ng-repeat="group in groups" href="#!groups/{{ group }}" ng-class="{'btn-primary': group === selectedGroup}">{{ group }}</a>
+            <a class="btn btn-block btn-default btn-lg" ng-repeat="group in groups" href="#!groups/{{ group }}" ng-class="{'btn-primary': group === selectedGroup}">{{ group }}</a>
         </div>
     </div>
 
@@ -29,7 +32,7 @@
         </div>
         
         <div class="pull-right">
-            <a class="btn btn-block btn-default" ng-click="ctrl.reloadData()">Reload</a>
+            <a id="reloadButton" class="btn btn-block btn-default" ng-click="ctrl.reloadData()">Reload</a>
         </div>
     </div>
 </div>

@@ -1,10 +1,19 @@
 <div class="row panel">
         <div >
-                <div id="categories" class="col-md-3">
+                <!-- <div id="categories" class="col-md-3">
                 <a class="btn btn-block btn-default btn-lg" href="#">Wszyscy</a>
-                <a class="btn btn-block btn-default btn-lg" ng-repeat="group in groups" href="#!groups/{{ group }}" >{{ group }}</a>
+                <a class="btn btn-block btn-default btn-lg" ng-repeat="group in groups" href="#!groups/{{ group }}" >{{ group }}</a> -->
+                <!-- </div> -->
+                <div id="categories" class="col-md-3">
+                        <div id="categoriesHead">
+                                <a class="btn btn-block btn-default btn-lg" href="#">Wszyscy</a>
+                        </div>
+                        <div id="categoriesBody">
+                                <a class="btn btn-block btn-default btn-lg" ng-repeat="group in groups" href="#!groups/{{ group }}">{{ group }}</a>
+                        </div>
+                </div>
         </div>
-        </div>
+        
         <div class="col-md-8">
                 <center><h2>Szczegóły</h2></center>
                 <div class="panel-body well">
