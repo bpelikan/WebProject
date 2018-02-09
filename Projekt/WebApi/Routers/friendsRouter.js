@@ -54,7 +54,7 @@ friendsRouter.get("/", (req, res, next) => {
          
         res.json(friends);
     });
-})
+});
 
 groupsRouter.get("/", (req, res, next) => {
     Friend.distinct('group', function(err, groups){
@@ -64,7 +64,7 @@ groupsRouter.get("/", (req, res, next) => {
         
         res.json(groups);
     });
-})
+});
 
 groupsRouter.get("/:groupName", (req, res, next) => {
     Friend.find({ group: req.params.groupName}, function(err, friend) {
@@ -89,7 +89,7 @@ groupsRouter.get("/:groupName", (req, res, next) => {
     // });
 
     // 
-})
+});
 
 friendsRouter.get("/:friendId", (req, res, next) => {
     Friend.findById(req.params.friendId, function(err, friend) {
@@ -98,7 +98,43 @@ friendsRouter.get("/:friendId", (req, res, next) => {
         }
         res.json(friend);
     });
-})
+});
+
+friendsRouter.get("/search/:friendString", (req, res, next) => {
+    Friend
+    // .or([{firstName: { $regex: '.*'+req.params.friendString+'.*' }}])
+    // .exec(function(err, friend) {
+    //         if (err) {
+    //             res.status(500).send('Couldn\'t get friend with this id from database');
+    //         }
+    //         console.log(req.params.friendString);
+    //         res.json(friend);
+    //     });
+    // .find({firstName: { $regex: '.*'+req.params.friendString+'.*' }},function(err, friend) {
+    //     if (err) {
+    //         res.status(500).send('Couldn\'t get friend with this id from database');
+    //     }
+    //     res.json(friend);
+    // });
+    .find({ $or:[ {'firstName':{ $regex: '.*'+req.params.friendString+'.*' }}, {'lastName':{ $regex: '.*'+req.params.friendString+'.*' }}, {'phoneNumber':{ $regex: '.*'+req.params.friendString+'.*' }}]},function(err, friend) {
+        if (err) {
+            res.status(500).send('Couldn\'t get friend with this id from database');
+        }
+        var uniqueItems = [...new Set(friend)]
+        res.json(uniqueItems);
+    });
+    
+    
+    // Friend
+    // .where('firstName', req.params.friendString)
+    // .exec(function(err, friend) {
+    //     if (err) {
+    //         res.status(500).send('Couldn\'t get friend with this id from database');
+    //     }
+    //     console.log(req.params.friendString);
+    //     res.json(friend);
+    // });
+});
 
 friendsRouter.put('/:friendId', (req, res, next) => {
     const receivedFriend = createElement('friends', req.body);
@@ -116,7 +152,7 @@ friendsRouter.put('/:friendId', (req, res, next) => {
       } else {
         res.status(400).send('Friend data couldn\'t be readed from request');
       }
-})
+});
 
 friendsRouter.post('/', (req, res, next) => {
     const receivedFriend = createElement('friends', req.body);
@@ -145,7 +181,7 @@ friendsRouter.post('/', (req, res, next) => {
       } else {
         res.status(400).send('Friend data couldn\'t be readed from request');
       }
-})
+});
 
 friendsRouter.delete('/:friendId', (req, res, next) => {
     Friend.remove({ _id: req.params.friendId }, function(err) {
@@ -154,6 +190,6 @@ friendsRouter.delete('/:friendId', (req, res, next) => {
         }
         res.status(204).send();
     });
-})
+});
 
 module.exports = {friendsRouter, groupsRouter};
