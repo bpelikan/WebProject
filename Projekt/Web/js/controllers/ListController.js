@@ -1,6 +1,6 @@
-app.controller('ListController', ['$scope', 'friends', 'groups', '$route', function($scope, friends, groups, $route) {
+app.controller('ListController', ['$scope', 'friends', 'groups', 'searchFriends', '$route', function($scope, friends, groups, searchFriends, $route) {
     console.log("ListController");
-    
+
     $scope.idSelectedGroup = null;
     
     $scope.isSortingColumn = {
@@ -24,11 +24,27 @@ app.controller('ListController', ['$scope', 'friends', 'groups', '$route', funct
     });
 
     this.searchFriend = function(friendToSearch) {
-        console.log(friendToSearch);
+        console.log("searchFriend function");
+        if(friendToSearch)
+        {
+            searchFriends.searchFriends(friendToSearch).then(function(data) {
+                console.log('friendToSearch: ' + friendToSearch);
+                // console.log(data);
+                $scope.friends = data;
+                $scope.friends = $scope.friends.sort(compareByName);
+            });
+        }
+        else{
+            friends.showFriends().then(function(data) {
+                //console.log(data);
+                $scope.friends = data;
+                $scope.friends = $scope.friends.sort(compareByName);
+            });
+        }
     };
 
-
     this.reloadData = function(){
+        // console.log($scope.friends);
         $route.reload();
     };
 
