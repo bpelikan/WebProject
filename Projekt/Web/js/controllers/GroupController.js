@@ -1,7 +1,7 @@
-app.controller('GroupController', ['$scope', 'groups', 'groupFriends', '$route', '$routeParams', function($scope, groups, groupFriends, $route, $routeParams) {
+app.controller('GroupController', ['$scope', 'groups', 'groupFriends', 'searchFriendInGroup', '$route', '$routeParams', function($scope, groups, groupFriends, searchFriendInGroup, $route, $routeParams) {
     console.log("GroupController");
     
-    $scope.selectedGroup = $routeParams.groupName;
+    $scope.idSelectedGroup = $routeParams.groupName;
 
     $scope.isSortingColumn = {
         name: true,
@@ -22,6 +22,26 @@ app.controller('GroupController', ['$scope', 'groups', 'groupFriends', '$route',
         //console.log(data);
         $scope.groups = data;
     });
+
+    this.searchFriend = function(friendToSearch) {
+        console.log("searchFriend function in group");
+        if(friendToSearch)
+        {
+            searchFriendInGroup.searchFriendInGroup(friendToSearch).then(function(data) {
+                console.log('friendToSearch: ' + friendToSearch);
+                // console.log(data);
+                $scope.friends = data;
+                $scope.friends = $scope.friends.sort(compareByName);
+            });
+        }
+        else{
+            groupFriends.showFriends().then(function(data) {
+                //console.log(data);
+                $scope.friends = data;
+                $scope.friends = $scope.friends.sort(compareByName);
+            });
+        }
+    };
 
     this.reloadData = function(){
         $route.reload()
