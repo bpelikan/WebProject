@@ -66,6 +66,22 @@ groupsRouter.get("/", (req, res, next) => {
     });
 });
 
+groupsRouter.get("/:groupName/search/:friendString", (req, res, next) => {
+    Friend
+    .find({ group: req.params.groupName })
+    .find({ $or:[ 
+        {'firstName':{ $regex: '.*' + req.params.friendString + '.*' }}, 
+        {'lastName':{ $regex: '.*' + req.params.friendString + '.*' }}, 
+        {'phoneNumber':{ $regex: '.*' + req.params.friendString + '.*' }}
+        ]},function(err, friend) {
+            if (err) {
+                res.status(500).send('Couldn\'t get friend with this id from database');
+            }
+            var uniqueFriend = [...new Set(friend)]
+            res.json(uniqueFriend);
+    });
+});
+
 groupsRouter.get("/:groupName", (req, res, next) => {
     Friend.find({ group: req.params.groupName}, function(err, friend) {
         if (err) {
@@ -91,6 +107,21 @@ groupsRouter.get("/:groupName", (req, res, next) => {
     // 
 });
 
+friendsRouter.get("/search/:friendString", (req, res, next) => {
+    Friend
+    .find({ $or:[ 
+        {'firstName':{ $regex: '.*'+req.params.friendString+'.*' }}, 
+        {'lastName':{ $regex: '.*'+req.params.friendString+'.*' }}, 
+        {'phoneNumber':{ $regex: '.*'+req.params.friendString+'.*' }}
+        ]},function(err, friend) {
+            if (err) {
+                res.status(500).send('Couldn\'t search friend from database');
+            }
+            var uniqueFriend = [...new Set(friend)]
+            res.json(uniqueFriend);
+    });
+});
+
 friendsRouter.get("/:friendId", (req, res, next) => {
     Friend.findById(req.params.friendId, function(err, friend) {
         if (err) {
@@ -98,46 +129,6 @@ friendsRouter.get("/:friendId", (req, res, next) => {
         }
         res.json(friend);
     });
-});
-
-friendsRouter.get("/search/:friendString", (req, res, next) => {
-    Friend
-    // .or([{firstName: { $regex: '.*'+req.params.friendString+'.*' }}])
-    // .exec(function(err, friend) {
-    //         if (err) {
-    //             res.status(500).send('Couldn\'t get friend with this id from database');
-    //         }
-    //         console.log(req.params.friendString);
-    //         res.json(friend);
-    //     });
-    // .find({firstName: { $regex: '.*'+req.params.friendString+'.*' }},function(err, friend) {
-    //     if (err) {
-    //         res.status(500).send('Couldn\'t get friend with this id from database');
-    //     }
-    //     res.json(friend);
-    // });
-    .find({ $or:[ 
-        {'firstName':{ $regex: '.*'+req.params.friendString+'.*' }}, 
-        {'lastName':{ $regex: '.*'+req.params.friendString+'.*' }}, 
-        {'phoneNumber':{ $regex: '.*'+req.params.friendString+'.*' }}
-        ]},function(err, friend) {
-            if (err) {
-                res.status(500).send('Couldn\'t get friend with this id from database');
-            }
-            var uniqueFriend = [...new Set(friend)]
-            res.json(uniqueFriend);
-    });
-    
-    
-    // Friend
-    // .where('firstName', req.params.friendString)
-    // .exec(function(err, friend) {
-    //     if (err) {
-    //         res.status(500).send('Couldn\'t get friend with this id from database');
-    //     }
-    //     console.log(req.params.friendString);
-    //     res.json(friend);
-    // });
 });
 
 friendsRouter.put('/:friendId', (req, res, next) => {
