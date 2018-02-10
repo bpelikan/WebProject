@@ -16,7 +16,7 @@ app.config(function ($routeProvider) {
       })
       .when('/groups/:groupName', { 
         controller: 'GroupController as ctrl', 
-        templateUrl: 'views/list.html' 
+        templateUrl: 'views/group.html'
       })
       .when('/Add', { 
         controller: 'AddController as ctrl', 
