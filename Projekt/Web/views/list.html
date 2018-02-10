@@ -1,48 +1,18 @@
 <div class="row panel">
     <div id="leftMenu" class="col-md-3">
-            <!-- <div class="input-group">
-                    <form data-toggle="validator" name="saveFriendForm" id="saveFriendForm" ng-controller="AddController as ctrl" ng-submit="ctrl.saveFriend(friendToAdd)">
-                <form data-toggle="validator" name="searchFriendForm" id="searchFriendForm" >
-                    <input type="text" class="form-control" placeholder="Wyszukaj..."  pattern="[a-zA-Z0-9]*[^ \n][a-zA-Z0-9]*" required>
-                    <span class="input-group-btn">
-                    <input type="submit" value="Szukaj" class="btn btn-primary" >
-                    </span>
-                </form>
-            </div> -->
-
-        <!-- <div> -->
-                <!-- <form data-toggle="validator" name="searchFriendForm" id="searchFriendForm" class="form-inline" ng-controller="SearchController as ctrl" ng-submit="ctrl.searchFriend(friendToSearch)"> -->
-            <!-- <form data-toggle="validator" name="searchFriendForm" id="searchFriendForm" class="form-inline"> -->
-                <!-- <div class="form-group"> -->
-                    <!-- <input type="text" class="form-control" placeholder="Wyszukaj..."  pattern="[a-zA-Z0-9]*[^ \n][a-zA-Z0-9]*" required> -->
-                <!-- </div> -->
-                <!-- <div class="form-group"> -->
-                    <!-- <input type="submit" value="Szukaj" class="btn btn-primary" > -->
-                <!-- </div>   -->
-            <!-- </form> -->
-        <!-- </div> -->
-        
-        <form data-toggle="validator" name="searchFriendForm" id="searchFriendForm" class="form-inline" ng-controller="ListController as ctrl" ng-submit="ctrl.searchFriend(friendToSearch)">
+        <form data-toggle="validator" name="searchFriendForm" id="searchFriendForm" class="form-inline" ng-submit="ctrl.searchFriend(friendToSearch)">
                 <input ng-model="friendToSearch" ng-change="ctrl.searchFriend(friendToSearch)" type="text" class="form-control" placeholder="Wyszukaj..."  pattern="[a-zA-Z0-9]*[^ \n][a-zA-Z0-9]*" required>
                 <input type="submit" value="Szukaj" class="btn btn-primary" >
         </form>
-
-        <!-- <div>
-            <label for="mySearch">Search for product by ID:</label>
-            <input type="search" id="mySearch" name="q"
-            placeholder="two letters followed by four numbers" required
-            size="30" pattern="[A-z]{2}[0-9]{4}">
-            <button>Search</button>
-            <span class="validity"></span>
-        </div> -->
         <br/>
+        
         <div id="categoriesHead">
             <a class="btn btn-block btn-default btn-lg" href="#" ng-class="{'btn-primary': idSelectedGroup === null}">Wszyscy</a>
         </div>
         <br/>
-        <!-- <h6></h6> -->
+
         <div id="categoriesBody">
-            <a class="btn btn-block btn-default btn-lg" ng-repeat="group in groups" href="#!groups/{{ group }}" ng-class="{'btn-primary': group === selectedGroup}">{{ group }}</a>
+            <a class="btn btn-block btn-default btn-lg" ng-repeat="group in groups" href="#!groups/{{ group }}" ng-class="{'btn-primary': group === idSelectedGroup}">{{ group }}</a>
         </div>
     </div>
 
@@ -66,7 +36,7 @@
             </table>
         </div>
         
-        <div class="pull-right">
+        <div class="pull-right" >
             <a id="reloadButton" class="btn btn-block btn-default" ng-click="ctrl.reloadData()">Reload</a>
         </div>
     </div>
