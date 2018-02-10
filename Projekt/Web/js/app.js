@@ -35,3 +35,4 @@ app.config(function ($routeProvider) {
 //walidacja danych
 //sortowanie kolumn - ikony
 //scrollowana tabela
+//wyszukiwanie w grupach

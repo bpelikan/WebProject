@@ -30,7 +30,7 @@
                     <tr ng-repeat="friend in friends">
                             <td class="col-md-5" ><a href="#!friends/{{ friend._id }}">{{ friend.lastName }} {{ friend.firstName }}</a></td>
                             <td class="col-md-2" >{{ friend.phoneNumber }}</td>
-                            <td class="col-md-2" >{{ friend.group  }}</td>    
+                            <td class="col-md-2" ><a href="#!groups/{{ friend.group }}">{{ friend.group  }}</a></td>    
                     </tr>
                 </tbody>
             </table>
