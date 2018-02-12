@@ -172,7 +172,7 @@ friendsRouter.delete('/:friendId', (req, res, next) => {
         if (err) {
             res.status(500).send('Couldn\'t delete friend with this id from database');
         }
-        
+
         res.status(204).send();
     });
 });
