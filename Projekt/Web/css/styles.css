@@ -36,4 +36,5 @@ thead, tbody tr {
     margin-bottom: 15px;
     color: gray;
     text-align: center;
+    font-size: smaller;
 }
