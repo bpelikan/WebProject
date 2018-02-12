@@ -67,9 +67,14 @@ groupsRouter.get("/", (req, res, next) => {
 });
 
 groupsRouter.get("/:groupName/search/:friendString", (req, res, next) => {
+    var str = req.params.friendString;
+    var split = str.split(" ", 2);
+    
     Friend
     .find({ group: req.params.groupName })
     .find({ $or:[ 
+        {$and:[{'firstName':{ $regex: '.*'+split[0]+'.*' }}, {'lastName':{ $regex: '.*'+split[1]+'.*' }}]},
+        {$and:[{'firstName':{ $regex: '.*'+split[1]+'.*' }}, {'lastName':{ $regex: '.*'+split[0]+'.*' }}]},
         {'firstName':{ $regex: '.*' + req.params.friendString + '.*' }}, 
         {'lastName':{ $regex: '.*' + req.params.friendString + '.*' }}, 
         {'phoneNumber':{ $regex: '.*' + req.params.friendString + '.*' }}
@@ -94,8 +99,13 @@ groupsRouter.get("/:groupName", (req, res, next) => {
 });
 
 friendsRouter.get("/search/:friendString", (req, res, next) => {
+    var str = req.params.friendString;
+    var split = str.split(" ", 2);
+    
     Friend
     .find({ $or:[ 
+        {$and:[{'firstName':{ $regex: '.*'+split[0]+'.*' }}, {'lastName':{ $regex: '.*'+split[1]+'.*' }}]},
+        {$and:[{'firstName':{ $regex: '.*'+split[1]+'.*' }}, {'lastName':{ $regex: '.*'+split[0]+'.*' }}]},
         {'firstName':{ $regex: '.*'+req.params.friendString+'.*' }}, 
         {'lastName':{ $regex: '.*'+req.params.friendString+'.*' }}, 
         {'phoneNumber':{ $regex: '.*'+req.params.friendString+'.*' }}

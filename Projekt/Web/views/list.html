@@ -1,7 +1,7 @@
 <div class="row panel">
     <div id="leftMenu" class="col-md-3">
         <form data-toggle="validator" name="searchFriendForm" id="searchFriendForm" class="form-inline" ng-submit="ctrl.searchFriend(friendToSearch)">
-                <input ng-model="friendToSearch" ng-change="ctrl.searchFriend(friendToSearch)" type="text" class="form-control" placeholder="Wyszukaj..."  pattern="[a-zA-Z0-9]*[^ \n][a-zA-Z0-9]*" required>
+                <input ng-model="friendToSearch" ng-change="ctrl.searchFriend(friendToSearch)" type="text" class="form-control" placeholder="Wyszukaj..."  pattern="[^ \n][a-zA-Z0-9ęóąśłżźćńĘÓĄŚŁŻŹĆŃ]*[ ]{0,1}[a-zA-Z0-9ęóąśłżźćńĘÓĄŚŁŻŹĆŃ]*[ ]{1}.*" required>
                 <input type="submit" value="Szukaj" class="btn btn-primary">    
         </form>
         <br/>
