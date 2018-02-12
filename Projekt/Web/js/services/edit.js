@@ -6,10 +6,9 @@ app.service('edit', ['$http', '$routeParams', '$route', '$window', function($htt
             url: 'http://localhost:4001/friends/' + $routeParams.friendId,
             data: friendToEdit
         }).then(function (success){
-            console.log("Edit friend service");
+            // console.log("Edit friend service");
             $window.history.back();
             $route.reload();
-            
             return success.data;
         },function (error){
             console.log("Error during saving friends from api");

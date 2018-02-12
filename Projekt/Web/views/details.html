@@ -1,9 +1,5 @@
 <div class="row panel">
         <div >
-                <!-- <div id="categories" class="col-md-3">
-                <a class="btn btn-block btn-default btn-lg" href="#">Wszyscy</a>
-                <a class="btn btn-block btn-default btn-lg" ng-repeat="group in groups" href="#!groups/{{ group }}" >{{ group }}</a> -->
-                <!-- </div> -->
                 <div id="leftMenu" class="col-md-3">
                         <div id="categoriesHead">
                                 <a class="btn btn-block btn-default btn-lg" href="#">Wszyscy</a>
@@ -80,15 +76,13 @@
                                         {{ friend.edited | date:'yyyy-MM-dd HH:mm:ss' }}
                                 </dd>
                         </dl>
-                        <!-- <div class="panel-footer"> -->
-                                <div class="pull-left">
-                                <!-- <div class="panel-footer pull-right"> -->
-                                        <a class="btn btn-block btn-lg btn-default" href="#!edit/{{ friend._id }}">Edytuj</a>
-                                </div>
-                                <div class="pull-right">
-                                        <button class="btn btn-block btn-lg btn-default" ng-click="ctrl.deleteFriend()">Usuń</button>
-                                </div>
-                        <!-- </div> -->
+                        
+                        <div class="pull-left">
+                                <a class="btn btn-block btn-lg btn-default" href="#!edit/{{ friend._id }}">Edytuj</a>
+                        </div>
+                        <div class="pull-right">
+                                <button class="btn btn-block btn-lg btn-default" ng-click="ctrl.deleteFriend()">Usuń</button>
+                        </div>
                 </div>
                 <div >
                         <button class="btn btn-block btn-default btn-lg" ng-click="ctrl.back()" >Wr&#243;ć</button>

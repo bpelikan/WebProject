@@ -1,5 +1,5 @@
 app.controller('GroupController', ['$scope', 'groups', 'groupFriends', 'searchFriendInGroup', 'deleteFriendService', '$route', '$routeParams', function($scope, groups, groupFriends, searchFriendInGroup, deleteFriendService, $route, $routeParams) {
-    console.log("GroupController");
+    // console.log("GroupController");
     
     $scope.idSelectedGroup = $routeParams.groupName;
 
@@ -13,31 +13,25 @@ app.controller('GroupController', ['$scope', 'groups', 'groupFriends', 'searchFr
     $scope.sortingByGroupDescending = false;
 
     groupFriends.showFriends().then(function(data) {
-        //console.log(data);
         $scope.friends = data;
         $scope.friends = $scope.friends.sort(compareByName);
     });
 
     groups.showGroups().then(function(data) {
-        //console.log(data);
         $scope.groups = data;
         $scope.groups = $scope.groups.sort(compareString);
     });
 
     this.searchFriend = function(friendToSearch) {
-        console.log("searchFriend function in group");
         if(friendToSearch)
         {
             searchFriendInGroup.searchFriendInGroup(friendToSearch).then(function(data) {
-                console.log('friendToSearch: ' + friendToSearch);
-                // console.log(data);
                 $scope.friends = data;
                 $scope.friends = $scope.friends.sort(compareByName);
             });
         }
         else{
             groupFriends.showFriends().then(function(data) {
-                //console.log(data);
                 $scope.friends = data;
                 $scope.friends = $scope.friends.sort(compareByName);
             });
@@ -45,9 +39,7 @@ app.controller('GroupController', ['$scope', 'groups', 'groupFriends', 'searchFr
     };
 
     this.deleteFriend = function(friendId) {
-        // console.log("delete friend");
         deleteFriendService.deleteFriend(friendId).then(function(data) {
-            //console.log(data);
             $route.reload();
             // $window.history.back();
         });
@@ -58,7 +50,6 @@ app.controller('GroupController', ['$scope', 'groups', 'groupFriends', 'searchFr
     }
 
     this.sortByName = function(){
-        console.log('sorting by name...');
         if($scope.isSortingColumn.name){
             $scope.sortingByNameDescending = !$scope.sortingByNameDescending;
             $scope.friends = $scope.friends.reverse();
@@ -77,8 +68,6 @@ app.controller('GroupController', ['$scope', 'groups', 'groupFriends', 'searchFr
     }
 
     this.sortByPhoneNumber = function(){
-        console.log('sorting by phone number...');
-
         if($scope.isSortingColumn.phoneNumber){
             $scope.sortingByPhoneNumberDescending = !$scope.sortingByPhoneNumberDescending;
             $scope.friends = $scope.friends.reverse();
@@ -87,7 +76,7 @@ app.controller('GroupController', ['$scope', 'groups', 'groupFriends', 'searchFr
             $scope.friends = $scope.friends.sort(compareByPhoneNumber);
             if($scope.sortingByPhoneNumber)
                 $scope.friends = $scope.friends.reverse();
-
+                
             $scope.isSortingColumn = {
                 name: false,
                 phoneNumber: true,
@@ -97,8 +86,6 @@ app.controller('GroupController', ['$scope', 'groups', 'groupFriends', 'searchFr
     }
 
     this.sortByGroup = function(){
-        console.log('sorting by group...');
-
         if($scope.isSortingColumn.group){
             $scope.sortingByGroupDescending = !$scope.sortingByGroupDescending;
             $scope.friends = $scope.friends.reverse();

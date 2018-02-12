@@ -89,22 +89,6 @@ groupsRouter.get("/:groupName", (req, res, next) => {
         }
         res.json(friend);
     });
-    
-    // var query = Friend.find({ group: req.params.groupName})
-    // query.skip(1);
-
-    // var query = Friend.find({})
-    // query.where('group', req.params.groupName);
-    // query.skip(1);
-
-    // query.exec(function(err, friend) {
-    //     if (err) {
-    //         res.status(500).send('Couldn\'t get friends with this group from database');
-    //     }
-    //     res.json(friend);
-    // });
-
-    // 
 });
 
 friendsRouter.get("/search/:friendString", (req, res, next) => {

@@ -1,8 +1,7 @@
 app.controller('EditController', ['$scope', 'friendDetails', 'edit', '$route', '$window', function($scope, friendDetails, edit, $route, $window) {
-    console.log("EditController");
+    // console.log("EditController");
 
     friendDetails.showDetails().then(function(data) {
-        //console.log(data);
         $scope.friendToEdit = data;
     });
     
@@ -13,7 +12,6 @@ app.controller('EditController', ['$scope', 'friendDetails', 'edit', '$route', '
     }
 
     this.back = function(){
-        console.log("back");
         $window.history.back();
     }
 }]);

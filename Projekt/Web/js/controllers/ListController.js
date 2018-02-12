@@ -1,5 +1,5 @@
 app.controller('ListController', ['$scope', 'friends', 'groups', 'searchFriends', 'deleteFriendService', '$route', function($scope, friends, groups, searchFriends, deleteFriendService, $route) {
-    console.log("ListController");
+    // console.log("ListController");
 
     $scope.idSelectedGroup = null;
     
@@ -13,31 +13,25 @@ app.controller('ListController', ['$scope', 'friends', 'groups', 'searchFriends'
     $scope.sortingByGroupDescending = false;
 
     friends.showFriends().then(function(data) {
-        //console.log(data);
         $scope.friends = data;
         $scope.friends = $scope.friends.sort(compareByName);
     });
 
     groups.showGroups().then(function(data) {
-        //console.log(data);
         $scope.groups = data;
         $scope.groups = $scope.groups.sort(compareString);
     });
 
     this.searchFriend = function(friendToSearch) {
-        console.log("searchFriend function");
         if(friendToSearch)
         {
             searchFriends.searchFriends(friendToSearch).then(function(data) {
-                console.log('friendToSearch: ' + friendToSearch);
-                // console.log(data);
                 $scope.friends = data;
                 $scope.friends = $scope.friends.sort(compareByName);
             });
         }
         else{
             friends.showFriends().then(function(data) {
-                //console.log(data);
                 $scope.friends = data;
                 $scope.friends = $scope.friends.sort(compareByName);
             });
@@ -45,22 +39,17 @@ app.controller('ListController', ['$scope', 'friends', 'groups', 'searchFriends'
     };
 
     this.deleteFriend = function(friendId) {
-        // console.log("delete friend");
         deleteFriendService.deleteFriend(friendId).then(function(data) {
-            //console.log(data);
             $route.reload();
             // $window.history.back();
         });
     }
 
     this.reloadData = function(){
-        // console.log($scope.friends);
-        // console.log($scope.groups);
         $route.reload();
     };
 
     this.sortByName = function(){
-        console.log('sorting by name...');
         if($scope.isSortingColumn.name){
             $scope.sortingByNameDescending = !$scope.sortingByNameDescending;
             $scope.friends = $scope.friends.reverse();
@@ -79,8 +68,6 @@ app.controller('ListController', ['$scope', 'friends', 'groups', 'searchFriends'
     };
 
     this.sortByPhoneNumber = function(){
-        console.log('sorting by phone number...');
-
         if($scope.isSortingColumn.phoneNumber){
             $scope.sortingByPhoneNumberDescending = !$scope.sortingByPhoneNumberDescending;
             $scope.friends = $scope.friends.reverse();
@@ -99,8 +86,6 @@ app.controller('ListController', ['$scope', 'friends', 'groups', 'searchFriends'
     };
 
     this.sortByGroup = function(){
-        console.log('sorting by group...');
-
         if($scope.isSortingColumn.group){
             $scope.sortingByGroupDescending = !$scope.sortingByGroupDescending;
             $scope.friends = $scope.friends.reverse();

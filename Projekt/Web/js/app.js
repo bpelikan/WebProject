@@ -26,10 +26,15 @@ app.config(function ($routeProvider) {
         redirectTo: '/' 
       }); 
   });
- //http-server web
 
- //-//npm i jquery-validation
- //-//npm install bootstrap-validator
+
+
+
+
+//http-server web
+
+//-//npm i jquery-validation
+//-//npm install bootstrap-validator
 
 //powrót do wcześniejszego stanu/miejsca
 //walidacja danych
