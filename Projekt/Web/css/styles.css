@@ -24,6 +24,6 @@ thead, tbody tr {
     table-layout:fixed;
 }
 
-::-webkit-scrollbar { 
+#friendsListTable ::-webkit-scrollbar, #leftMenu ::-webkit-scrollbar { 
     display: none; 
 }
