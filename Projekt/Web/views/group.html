@@ -1,6 +1,5 @@
 <div class="row panel">
     <div id="leftMenu" class="col-md-3">
-        <!-- group -->
         <form data-toggle="validator" name="searchFriendForm" id="searchFriendForm" class="form-inline" ng-submit="ctrl.searchFriend(friendToSearch)">
                 <input ng-model="friendToSearch" ng-change="ctrl.searchFriend(friendToSearch)" type="text" class="form-control" placeholder="Wyszukaj..."  pattern="[a-zA-Z0-9]*[^ \n][a-zA-Z0-9]*" required>
                 <input type="submit" value="Szukaj" class="btn btn-primary" >
@@ -45,7 +44,7 @@
         </div>
         
         <div class="pull-right" >
-            <a id="reloadButton" class="btn btn-block btn-default" ng-click="ctrl.reloadData()">Reload</a>
+            <a id="reloadButton" class="btn btn-block btn-default" ng-click="ctrl.reloadData()">Odśwież</a>
         </div>
     </div>
 </div>

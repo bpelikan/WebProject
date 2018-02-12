@@ -1,5 +1,5 @@
 app.controller('DetailsController', ['$scope', 'friendDetails', 'groups', 'deleteFriendService', '$window', '$route', '$routeParams', function($scope, friendDetails, groups, deleteFriendService, $window, $route, $routeParams) { 
-    console.log("DetailsController");
+    // console.log("DetailsController");
 
     groups.showGroups().then(function(data) {
         $scope.groups = data;
@@ -19,7 +19,6 @@ app.controller('DetailsController', ['$scope', 'friendDetails', 'groups', 'delet
     }
 
     this.back = function(){
-        console.log("back");
         $window.history.back();
     }
 

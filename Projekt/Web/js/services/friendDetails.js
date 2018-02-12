@@ -4,7 +4,7 @@ app.service('friendDetails', ['$http', '$routeParams', function($http, $routePar
             method: 'GET',
             url: 'http://localhost:4001/friends/' + $routeParams.friendId
         }).then(function (success){
-            console.log("Friend details service");
+            // console.log("Friend details service");
             return success.data;
         },function (error){
             console.log("Error during downloading friends from api");

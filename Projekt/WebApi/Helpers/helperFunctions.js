@@ -1,4 +1,3 @@
-
 const createElement = (elementType, queryArguments) => {
     if (queryArguments.hasOwnProperty('firstName') &&
         queryArguments.hasOwnProperty('lastName') &&

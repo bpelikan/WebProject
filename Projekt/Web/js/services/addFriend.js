@@ -6,7 +6,7 @@ app.service('addFriend', ['$http', '$route', '$window', function($http, $route, 
             url: 'http://localhost:4001/friends',
             data: friendToAdd
         }).then(function (success){
-            console.log("Add friend service");
+            // console.log("Add friend service");
             $route.reload();
             $window.history.back();
             return success.data;

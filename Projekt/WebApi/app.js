@@ -1,4 +1,3 @@
-// Import the express library here
 const express = require('express');
 const bodyParser = require('body-parser');
 const {friendsRouter, groupsRouter} = require('./Routers/friendsRouter');
@@ -7,8 +6,8 @@ const errorHandler = require('errorhandler')
 
 // Instantiate the app here
 const app = express();
-app.use(bodyParser.json());// to support JSON-encoded bodies
-app.use(bodyParser.urlencoded({ extended: false }));// to support URL-encoded bodies
+app.use(bodyParser.json()); // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({ extended: false }));    // to support URL-encoded bodies
 
 const PORT = process.env.PORT || 4001;
 app.use('/static', express.static('public'));
@@ -40,7 +39,6 @@ app.use((err, req, res, next) => {
     res.status(500).send(err);
 });
 
-// Invoke the app's `.listen()` method below:
 app.listen(PORT, () => {
   console.log(`Server is listening on port ${PORT}`);
 });
