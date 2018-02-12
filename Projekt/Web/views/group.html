@@ -2,7 +2,7 @@
     <div id="leftMenu" class="col-md-3">
         <form data-toggle="validator" name="searchFriendForm" id="searchFriendForm" class="form-inline" ng-submit="ctrl.searchFriend(friendToSearch)">
                 <input ng-model="friendToSearch" ng-change="ctrl.searchFriend(friendToSearch)" type="text" class="form-control" placeholder="Wyszukaj..."  pattern="[a-zA-Z0-9]*[^ \n][a-zA-Z0-9]*" required>
-                <input type="submit" value="Szukaj" class="btn btn-primary" >
+                <input type="submit" value="Szukaj" class="btn btn-primary">
         </form>
         <br/>
         
@@ -16,9 +16,9 @@
         </div>
     </div>
 
-    <div class="col-md-8 ">
-        <div class="row panel-body ">
-            <table id="friendsListTable" class="well table table-hover table-bordered table-scroll " >
+    <div class="col-md-8">
+        <div class="row panel-body">
+            <table id="friendsListTable" class="well table table-hover table-bordered table-scroll">
                 <thead class="test">
                     <tr>
                         <th class="col-md-5" ng-click="ctrl.sortByName()">Nazwisko i Imię <span ng-if="isSortingColumn.name" class="glyphicon" ng-class="sortingByNameDescending ? 'glyphicon-sort-by-alphabet-alt' : 'glyphicon-sort-by-alphabet'"></span></th>
@@ -29,10 +29,10 @@
                 </thead>
                 <tbody >
                     <tr ng-repeat="friend in friends">
-                            <td class="col-md-5" ><a href="#!friends/{{ friend._id }}">{{ friend.lastName }} {{ friend.firstName }}</a></td>
-                            <td class="col-md-3" >{{ friend.phoneNumber }}</td>
-                            <td class="col-md-2" >{{ friend.group  }}</td>   
-                            <td class="col-md-2" >
+                            <td class="col-md-5"><a href="#!friends/{{ friend._id }}">{{ friend.lastName }} {{ friend.firstName }}</a></td>
+                            <td class="col-md-3">{{ friend.phoneNumber }}</td>
+                            <td class="col-md-2">{{ friend.group  }}</td>   
+                            <td class="col-md-2">
                                 <div class="btn-group">
                                     <a type="button" class="btn btn-xs btn-primary" href="#!edit/{{ friend._id }}">Edytuj</a> 
                                     <button type="button" class="btn btn-xs btn-primary" ng-click="ctrl.deleteFriend(friend._id)">Usuń</button>
@@ -43,7 +43,7 @@
             </table>
         </div>
         
-        <div class="pull-right" >
+        <div class="pull-right">
             <a id="reloadButton" class="btn btn-block btn-default" ng-click="ctrl.reloadData()">Odśwież</a>
         </div>
     </div>

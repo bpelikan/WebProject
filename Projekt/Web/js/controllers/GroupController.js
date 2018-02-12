@@ -8,6 +8,7 @@ app.controller('GroupController', ['$scope', 'groups', 'groupFriends', 'searchFr
         phoneNumber: false,
         group: false
     }
+    
     $scope.sortingByNameDescending = false;
     $scope.sortingByPhoneNumberDescending = false;
     $scope.sortingByGroupDescending = false;
@@ -74,7 +75,7 @@ app.controller('GroupController', ['$scope', 'groups', 'groupFriends', 'searchFr
         }
         else{
             $scope.friends = $scope.friends.sort(compareByPhoneNumber);
-            if($scope.sortingByPhoneNumber)
+            if($scope.sortingByPhoneNumberDescending)
                 $scope.friends = $scope.friends.reverse();
                 
             $scope.isSortingColumn = {
@@ -92,7 +93,7 @@ app.controller('GroupController', ['$scope', 'groups', 'groupFriends', 'searchFr
         }
         else{
             $scope.friends = $scope.friends.sort(compareByGroup);
-            if($scope.sortingByGroup)
+            if($scope.sortingByGroupDescending)
                 $scope.friends = $scope.friends.reverse();
 
             $scope.isSortingColumn = {

@@ -75,8 +75,9 @@ groupsRouter.get("/:groupName/search/:friendString", (req, res, next) => {
         {'phoneNumber':{ $regex: '.*' + req.params.friendString + '.*' }}
         ]},function(err, friend) {
             if (err) {
-                res.status(500).send('Couldn\'t get friend with this id from database');
+                res.status(500).send('Couldn\'t get friend with this search data from database');
             }
+
             var uniqueFriend = [...new Set(friend)]
             res.json(uniqueFriend);
     });
@@ -87,6 +88,7 @@ groupsRouter.get("/:groupName", (req, res, next) => {
         if (err) {
             res.status(500).send('Couldn\'t get friends with this group from database');
         }
+
         res.json(friend);
     });
 });
@@ -101,6 +103,7 @@ friendsRouter.get("/search/:friendString", (req, res, next) => {
             if (err) {
                 res.status(500).send('Couldn\'t search friend from database');
             }
+
             var uniqueFriend = [...new Set(friend)]
             res.json(uniqueFriend);
     });
@@ -111,6 +114,7 @@ friendsRouter.get("/:friendId", (req, res, next) => {
         if (err) {
             res.status(500).send('Couldn\'t get friend with this id from database');
         }
+
         res.json(friend);
     });
 });
@@ -124,8 +128,9 @@ friendsRouter.put('/:friendId', (req, res, next) => {
             receivedFriend, 
             function(err, friend) {
                 if (err) {
-                    res.status(500).send('Friend  couldn\'t be saved in database');
+                    res.status(500).send('Friend couldn\'t be saved in database');
                 }
+
                 res.json(friend);
         });
       } else {
@@ -154,7 +159,7 @@ friendsRouter.post('/', (req, res, next) => {
             if (err) {
                 res.status(500).send('Friend couldn\'t be saved in database');
             }
-            console.log('Friend successfully saved.');
+
             res.status(201).json(friendToAdd);
         });
       } else {
@@ -167,6 +172,7 @@ friendsRouter.delete('/:friendId', (req, res, next) => {
         if (err) {
             res.status(500).send('Couldn\'t delete friend with this id from database');
         }
+        
         res.status(204).send();
     });
 });
