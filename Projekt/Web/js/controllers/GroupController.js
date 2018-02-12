@@ -1,4 +1,4 @@
-app.controller('GroupController', ['$scope', 'groups', 'groupFriends', 'searchFriendInGroup', '$route', '$routeParams', function($scope, groups, groupFriends, searchFriendInGroup, $route, $routeParams) {
+app.controller('GroupController', ['$scope', 'groups', 'groupFriends', 'searchFriendInGroup', 'deleteFriendService', '$route', '$routeParams', function($scope, groups, groupFriends, searchFriendInGroup, deleteFriendService, $route, $routeParams) {
     console.log("GroupController");
     
     $scope.idSelectedGroup = $routeParams.groupName;
@@ -42,6 +42,15 @@ app.controller('GroupController', ['$scope', 'groups', 'groupFriends', 'searchFr
             });
         }
     };
+
+    this.deleteFriend = function(friendId) {
+        // console.log("delete friend");
+        deleteFriendService.deleteFriend(friendId).then(function(data) {
+            //console.log(data);
+            $route.reload();
+            // $window.history.back();
+        });
+    }
 
     this.reloadData = function(){
         $route.reload()

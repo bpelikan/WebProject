@@ -1,4 +1,4 @@
-app.controller('ListController', ['$scope', 'friends', 'groups', 'searchFriends', '$route', function($scope, friends, groups, searchFriends, $route) {
+app.controller('ListController', ['$scope', 'friends', 'groups', 'searchFriends', 'deleteFriendService', '$route', function($scope, friends, groups, searchFriends, deleteFriendService, $route) {
     console.log("ListController");
 
     $scope.idSelectedGroup = null;
@@ -42,6 +42,15 @@ app.controller('ListController', ['$scope', 'friends', 'groups', 'searchFriends'
             });
         }
     };
+
+    this.deleteFriend = function(friendId) {
+        // console.log("delete friend");
+        deleteFriendService.deleteFriend(friendId).then(function(data) {
+            //console.log(data);
+            $route.reload();
+            // $window.history.back();
+        });
+    }
 
     this.reloadData = function(){
         // console.log($scope.friends);

@@ -1,9 +1,9 @@
-app.service('deleteFriendService', ['$http', '$routeParams', function($http, $routeParams) { 
-    this.deleteFriend = function(){
+app.service('deleteFriendService', ['$http' /*, '$routeParams'*/, function($http /*, $routeParams*/) { 
+    this.deleteFriend = function(friendId){
         return $http({
             method: 'DELETE',
             headers: {'Content-Type': 'application/json'},
-            url: 'http://localhost:4001/friends/' + $routeParams.friendId
+            url: 'http://localhost:4001/friends/' + friendId
         }).then(function (success){
             console.log("Delete friend service");
             //console.log(success);

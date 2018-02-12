@@ -1,4 +1,4 @@
-app.controller('DetailsController', ['$scope', 'friendDetails', 'groups', 'deleteFriendService', '$window', '$route', function($scope, friendDetails, groups, deleteFriendService, $window, $route) { 
+app.controller('DetailsController', ['$scope', 'friendDetails', 'groups', 'deleteFriendService', '$window', '$route', '$routeParams', function($scope, friendDetails, groups, deleteFriendService, $window, $route, $routeParams) { 
     console.log("DetailsController");
 
     groups.showGroups().then(function(data) {
@@ -10,7 +10,7 @@ app.controller('DetailsController', ['$scope', 'friendDetails', 'groups', 'delet
     });
 
     this.deleteFriend = function() {
-        deleteFriendService.deleteFriend().then(function(data) {
+        deleteFriendService.deleteFriend($routeParams.friendId).then(function(data) {
             //console.log(data);
             $route.reload();
             $window.history.back();
