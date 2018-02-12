@@ -3,6 +3,7 @@ app.controller('DetailsController', ['$scope', 'friendDetails', 'groups', 'delet
 
     groups.showGroups().then(function(data) {
         $scope.groups = data;
+        $scope.groups = $scope.groups.sort(compareString);
     });
 
     friendDetails.showDetails().then(function(data) {
@@ -21,4 +22,12 @@ app.controller('DetailsController', ['$scope', 'friendDetails', 'groups', 'delet
         console.log("back");
         $window.history.back();
     }
+
+    function compareString(a,b) {
+        if (a.toUpperCase() < b.toUpperCase())
+          return -1;
+        if (a.toUpperCase() > b.toUpperCase())
+          return 1;
+        return 0;
+    };  
 }]);

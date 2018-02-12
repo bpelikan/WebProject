@@ -21,6 +21,7 @@ app.controller('GroupController', ['$scope', 'groups', 'groupFriends', 'searchFr
     groups.showGroups().then(function(data) {
         //console.log(data);
         $scope.groups = data;
+        $scope.groups = $scope.groups.sort(compareString);
     });
 
     this.searchFriend = function(friendToSearch) {

@@ -21,6 +21,7 @@ app.controller('ListController', ['$scope', 'friends', 'groups', 'searchFriends'
     groups.showGroups().then(function(data) {
         //console.log(data);
         $scope.groups = data;
+        $scope.groups = $scope.groups.sort(compareString);
     });
 
     this.searchFriend = function(friendToSearch) {
@@ -54,6 +55,7 @@ app.controller('ListController', ['$scope', 'friends', 'groups', 'searchFriends'
 
     this.reloadData = function(){
         // console.log($scope.friends);
+        // console.log($scope.groups);
         $route.reload();
     };
 
