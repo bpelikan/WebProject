@@ -27,3 +27,11 @@ thead, tbody tr {
 #friendsListTable ::-webkit-scrollbar, #leftMenu ::-webkit-scrollbar { 
     display: none; 
 }
+
+#footer
+{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    color: gray;
+    text-align: center;
+}
