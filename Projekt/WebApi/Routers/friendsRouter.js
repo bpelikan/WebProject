@@ -101,6 +101,7 @@ friendsRouter.get("/search/:friendString", (req, res, next) => {
         {'phoneNumber':{ $regex: '.*'+req.params.friendString+'.*' }}
         ]},function(err, friend) {
             if (err) {
+                
                 res.status(500).send('Couldn\'t search friend from database');
             }
 
